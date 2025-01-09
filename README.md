@@ -59,7 +59,7 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | :---- | :---------- |
 | Max HP | Broken Bottle |
 | Weapon | Sobriety |
-| Special | Powder |
+| Special | Spray |
 | Max Special | 55 |
 | Special Attack | Spray // Damage: 1- 15 to target wih chance of 1 Damage to other players lasting 2 turns // Cost: 10 |
 | Attack | Damage: 1 - 8 |
