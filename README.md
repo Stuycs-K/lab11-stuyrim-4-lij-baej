@@ -57,9 +57,9 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 ### Boss: Drunkard
 | Stats | Description |
 | :---- | :---------- |
-| Max HP | Broken Bottle |
-| Weapon | Sobriety |
-| Special | Spray |
+| Max HP | 100 |
+| Weapon | Broken Bottle |
+| Special | Sobriety |
 | Max Special | 55 |
 | Special Attack | Spray // Damage: 1- 15 to target wih chance of 1 Damage to other players lasting 2 turns // Cost: 10 |
 | Attack | Damage: 1 - 8 |
