@@ -15,6 +15,20 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        for (int i = 0; i < HEIGHT; i++) {
+            Text.color(BORDER_COLOR, BORDER_BACKGROUND);
+            if (i == 0 || i == 29) {
+                Text.go(i+1, 1);
+                for (int j = 0; j < WIDTH; j++) {
+                System.out.print(".");
+                }
+            } else {
+                Text.go(i+1,1);
+                System.out.print(".");
+                Text.go(i+1,80);
+                System.out.print(".");
+            }
+        }
   }
 
   //Display a line of text starting at
@@ -24,6 +38,8 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    Text.go(startRow, startCol);
+    System.out.print(s);
   }
 
   /*Use this method to place text on the screen at a particular location.
