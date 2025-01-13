@@ -87,7 +87,7 @@ public class Game{
             TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, party[j].getName());
           }
           else if (i == 1) {
-            TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, "HP: " party[j].getHP());
+            TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, "HP: " + party[j].getHP());
           }
           else {
             TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, party[j].getSpecialMax() + ": " + party[j].getSpecial());
