@@ -84,13 +84,13 @@ public class Game{
       for (int i = 0; i < 3; i++) {
         for (int j = 0; j < party.size(); j++) {
           if (i == 0) {
-            TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, party[j].getName());
+            TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, party.get(j).getName());
           }
           else if (i == 1) {
-            TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, "HP: " + party[j].getHP());
+            TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, "HP: " + party.get(j).getHP());
           }
           else {
-            TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, party[j].getSpecialMax() + ": " + party[j].getSpecial());
+            TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, party.get(j).getSpecialMax() + ": " + party.get(j).getSpecial());
           }
         }
       }
@@ -114,7 +114,7 @@ public class Game{
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
-  public static void drawScreen(){
+  public static void drawScreen( ArrayList<Adventurer> party,   ArrayList<Adventurer> enemies){
 
     drawBackground();
 
