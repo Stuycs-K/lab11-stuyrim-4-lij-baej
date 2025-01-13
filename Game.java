@@ -81,9 +81,18 @@ public class Game{
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-      int column = 2;
-      for (player:party) {
-        
+      for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < party.size(); j++) {
+          if (i == 0) {
+            TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, party[j].getName());
+          }
+          else if (i == 1) {
+            TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, "HP: " party[j].getHP());
+          }
+          else {
+            TextBox(startRow + i, 80/(party.size() +1) * (j+1), 80/(party.size() +1), 3, party[j].getSpecialMax() + ": " + party[j].getSpecial());
+          }
+        }
       }
     }
 
@@ -109,9 +118,9 @@ public class Game{
 
     drawBackground();
 
-    //draw player party
+    drawParty(party, 2);
 
-    //draw enemy party
+    drawParty(enemies, 6);
 
   }
 
