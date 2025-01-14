@@ -242,6 +242,7 @@ public class Game{
         //done with one party member
       }else{
         //not the party turn!
+        int whichOpponent = (int)(Math.random()*(enemies.size()+1)));
 
 
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
