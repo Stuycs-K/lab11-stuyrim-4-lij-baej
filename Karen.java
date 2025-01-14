@@ -1,73 +1,72 @@
-public class Thug extends Adventurer{
-  int anger, angerMax;
+public class Karen extends Adventurer{
+  int demands, demandsMax;
   String preferredWeapon;
 
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
-  public Thug(String name, int hp, String weapon){
+  public Karen(String name, int hp, String weapon){
     super(name,hp);
-    angerMax = 12;
-    anger = angerMax/2;
+    demandsMax = 10;
+    demands = demandsMax/2;
     preferredWeapon = weapon;
   }
 
-  public Thug(String name, int hp){
-    this(name,hp,"Baseball Bat");
+  public Karen(String name, int hp){
+    this(name,hp,"Purse");
   }
 
-  public Thug(String name){
-    this(name,30);
+  public Karen(String name){
+    this(name,40);
   }
 
-  public Thug(){
-    this("Thug");
+  public Karen(){
+    this("Karen");
   }
 
   /*The next 8 methods are all required because they are abstract:*/
   public String getSpecialName(){
-    return "anger";
+    return "demands";
   }
 
   public int getSpecial(){
-    return anger;
+    return demands;
   }
 
   public void setSpecial(int n){
-    anger = n;
+    demands = n;
   }
 
   public int getSpecialMax(){
-    return angerMax;
+    return demandsMax;
   }
 
-  /*Deal 2-7 damage to opponent, restores 2 anger*/
+  /*Deal 1-3 damage to opponent, restores 2 demands*/
   public String attack(Adventurer other){
-    int damage = (int)(Math.random()*6)+2;
+    int damage = (int)(Math.random()*3)+1;
     other.applyDamage(damage);
     restoreSpecial(2);
     return this + " attacked "+ other + " and dealt "+ damage +
-    " points of damage. He then lets out a thick roar.";
+    " points of damage. She then laughed obnoxiously.";
   }
 
-  /*Deal 3-12 damage to opponent, only if anger is high enough.
-  *Reduces anger by 8.
+  /*Deal 3-12 damage to opponent, only if demands is high enough.
+  *Reduces demands by 8.
   */
   public String specialAttack(Adventurer other){
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
-      int damage = (15;
+      int damage = (10);
       other.applyDamage(damage);
-      return this + " striked their "+preferredWeapon+
-      " to " + other
-      " He knocked out "+other+" dealing "+ damage +" points of damage.";
+      return this + " called her Manager!" +
+      " She knocked out "+other+" dealing "+ damage +" points of damage.";
     }else{
-      return "Not enough anger to use the strike. Instead "+attack(other);
+      return "Not enough demands to Call the Manager. Instead "+attack(other);
     }
 
   }
   /*Restores 5 special to other*/
   public String support(Adventurer other){
-    return "Gives a encouraging yell to "+other+" and restores "
+    return "Pretends to help "+other+" and restores "
     + other.restoreSpecial((int)(Math.random()*1)+1)+" "+other.getSpecialName();
   }
 
@@ -75,7 +74,7 @@ public class Thug extends Adventurer{
   public String support(){
     int hp = 1;
     setHP(getHP()+hp);
-    return this+" yells out to restore"+restoreSpecial((int)(Math.random()*1)+1)+" "
+    return this+" breaths in and counts from three to one, restoring "+restoreSpecial((int)(Math.random()*1)+1)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
 }
