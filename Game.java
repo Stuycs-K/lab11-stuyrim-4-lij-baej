@@ -98,13 +98,13 @@ public class Game{
       for (int i = 0; i < 3; i++) {
         for (int j = 0; j < party.size(); j++) {
           if (i == 0) {
-            TextBox(startRow + i, 80/(party.size()) * j, 80/(party.size()), 3, party.get(j).getName());
+            TextBox(startRow + i, 80/(party.size()) * j + 2, 80/(party.size()), 3, party.get(j).getName());
           }
           else if (i == 1) {
-            TextBox(startRow + i, 80/(party.size()) * j, 80/(party.size()), 3, "HP: " + party.get(j).getHP());
+            TextBox(startRow + i, 80/(party.size()) * j + 2, 80/(party.size()), 3, "HP: " + party.get(j).getHP());
           }
           else {
-            TextBox(startRow + i, 80/(party.size()) * j, 80/(party.size()), 3, party.get(j).getSpecialMax() + ": " + party.get(j).getSpecial());
+            TextBox(startRow + i, 80/(party.size()) * j + 2, 80/(party.size()), 3, party.get(j).getSpecialMax() + ": " + party.get(j).getSpecial());
           }
         }
       }
