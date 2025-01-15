@@ -64,7 +64,7 @@ public class Game{
       } else {
         drawText(text, row, col);
         if (row < height) {
-          for (int i = 0; i < height - row, i++) {
+          for (int i = 0; i < height - row; i++) {
             for (int j = 0; j < width; j++) {
               drawText(" ", i, j);
             }
@@ -189,7 +189,7 @@ public class Game{
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen();//initial state.
+    drawScreen(party, enemies);//initial state.
 
     //Main loop
 
