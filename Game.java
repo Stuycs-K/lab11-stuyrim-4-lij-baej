@@ -198,7 +198,7 @@ public class Game{
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen();//initial state.
+    drawScreen(party, enemies);//initial state.
 
     //Main loop
 
