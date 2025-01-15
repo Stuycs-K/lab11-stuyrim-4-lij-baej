@@ -26,7 +26,7 @@ public class Game{
                 Text.go(i+1,1);
                 System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
                 Text.go(i+1,80);
-                System.out.print(".");
+                System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
             }
         }
   }
@@ -98,13 +98,13 @@ public class Game{
       for (int i = 0; i < 3; i++) {
         for (int j = 0; j < party.size(); j++) {
           if (i == 0) {
-            TextBox(startRow + i, 80/(party.size() -1) * j, 80/(party.size() -1), 3, party.get(j).getName());
+            TextBox(startRow + i, 80/(party.size()) * j, 80/(party.size()), 3, party.get(j).getName());
           }
           else if (i == 1) {
-            TextBox(startRow + i, 80/(party.size() -1) * j, 80/(party.size() -1), 3, "HP: " + party.get(j).getHP());
+            TextBox(startRow + i, 80/(party.size()) * j, 80/(party.size()), 3, "HP: " + party.get(j).getHP());
           }
           else {
-            TextBox(startRow + i, 80/(party.size() -1) * j, 80/(party.size() -1), 3, party.get(j).getSpecialMax() + ": " + party.get(j).getSpecial());
+            TextBox(startRow + i, 80/(party.size()) * j, 80/(party.size()), 3, party.get(j).getSpecialMax() + ": " + party.get(j).getSpecial());
           }
         }
       }
