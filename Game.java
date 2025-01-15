@@ -64,7 +64,7 @@ public class Game{
     } else {
       drawText(text, row, col);
       if (row < height) {
-        for (int i = 0; i < height - row, i++) {
+        for (int i = 0; i < height - row; i++) {
           for (int j = 0; j < width; j++) {
             drawText(" ", i, j);
           }
@@ -176,15 +176,15 @@ public class Game{
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
-    Adventurer boss = new Adventurer();
+    Adventurer boss = new Boss();
     enemies.add(boss);
 
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    Adventurer one = new Adventurer();
-    Adventurer two = new Adventurer();
+    Adventurer one = new Karen();
+    Adventurer two = new Thug();
     party.add(one);
     party.add(two);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -256,7 +256,7 @@ public class Game{
         //done with one party member
       }else{
         //not the party turn!
-        int whichOpponent = (int)(Math.random()*(enemies.size()+1)));
+        //int whichOpponent = (int)(Math.random()*(enemies.size()+1)));
 
 
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
@@ -285,7 +285,7 @@ public class Game{
       }
 
       //display the updated screen after input has been processed.
-      drawScreen();
+      drawScreen(party, enemies);
 
 
     }//end of main game loop
