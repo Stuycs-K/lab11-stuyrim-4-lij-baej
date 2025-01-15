@@ -57,8 +57,7 @@ public class Thug extends Adventurer{
       setSpecial(getSpecial()-8);
       int damage = (15);
       other.applyDamage(damage);
-      return this + " striked their "+preferredWeapon+ " to " + other;
-      " He knocked out "+other+" dealing "+ damage +" points of damage.";
+      return this + " striked their "+preferredWeapon+ " to " + other + " He knocked out "+other+" dealing "+ damage +" points of damage.";
     }else{
       return "Not enough anger to use the strike. Instead "+attack(other);
     }
