@@ -20,7 +20,7 @@ public class Game{
             if (i == 0 || i == 29) {
                 Text.go(i+1, 1);
                 for (int j = 0; j < WIDTH; j++) {
-                System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
+                  System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
                 }
             } else {
                 Text.go(i+1,1);
@@ -53,10 +53,24 @@ public class Game{
   *@param height the number of rows
   */
   public static void TextBox(int row, int col, int width, int height, String text){
-    drawText(text, row, col);
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+      if (text.length() > width) {
+        drawText(text.substring(0, width), row, col);
+        if (row < height) {
+          TextBox(row + 1, col, width, height, text.substring(width));
+        }
+      } else {
+        drawText(text, row, col);
+        if (row < height) {
+          for (int i = 0; i < height - row, i++) {
+            for (int j = 0; j < width; j++) {
+              drawText(" ", i, j);
+            }
+          }
+        }
+      }
   }
 
 
