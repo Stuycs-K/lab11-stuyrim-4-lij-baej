@@ -56,6 +56,7 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+<<<<<<< HEAD
       if (text.length() > width) {
         drawText(text.substring(0, width), row, col);
         if (row < height) {
@@ -68,9 +69,23 @@ public class Game{
             for (int j = 0; j < width; j++) {
               drawText(" ", i, j);
             }
+=======
+    if (text.length() > width) {
+      drawText(text.substring(0, width), row, col);
+      if (row < height) {
+        TextBox(row + 1, col, width, height, text.substring(width));
+      }
+    } else {
+      drawText(text, row, col);
+      if (row < height) {
+        for (int i = 0; i < height - row, i++) {
+          for (int j = 0; j < width; j++) {
+            drawText(" ", i, j);
+>>>>>>> c8281af597b5acc0f13c2e6650dc3342fa6b50d7
           }
         }
       }
+    }
   }
 
 
@@ -114,6 +129,15 @@ public class Game{
   //Use this to create a colorized number string based on the % compared to the max value.
   public static String colorByPercent(int hp, int maxHP){
     String output = String.format("%2s", hp+"")+"/"+String.format("%2s", maxHP+"");
+    int percent = (int)((hp / maxHP) * 100);
+    if (percent > 25){
+      Text.colorize(output, 31);
+    }else if (percent > 75){
+      Text.colorize(output, 33);
+    }else{
+      Text.colorize(output, 37);
+    }
+
     //COLORIZE THE OUTPUT IF HIGH/LOW:
     // under 25% : red
     // under 75% : yellow
@@ -247,6 +271,7 @@ public class Game{
         //done with one party member
       }else{
         //not the party turn!
+        int whichOpponent = (int)(Math.random()*(enemies.size()+1)));
 
 
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`

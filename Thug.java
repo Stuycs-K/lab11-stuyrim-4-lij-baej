@@ -56,6 +56,7 @@ public class Thug extends Adventurer{
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
       int damage = (15;
+      int damage = (15);
       other.applyDamage(damage);
       return this + " striked their "+preferredWeapon+
       " to " + other
