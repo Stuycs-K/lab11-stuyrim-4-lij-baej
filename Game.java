@@ -56,21 +56,21 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-      if (text.length() > width) {
-        drawText(text.substring(0, width), row, col);
-        if (row < height) {
-          TextBox(row + 1, col, width, height, text.substring(width));
-        }
-      } else {
-        drawText(text, row, col);
-        if (row < height) {
-          for (int i = 0; i < height - row, i++) {
-            for (int j = 0; j < width; j++) {
-              drawText(" ", i, j);
-            }
+    if (text.length() > width) {
+      drawText(text.substring(0, width), row, col);
+      if (row < height) {
+        TextBox(row + 1, col, width, height, text.substring(width));
+      }
+    } else {
+      drawText(text, row, col);
+      if (row < height) {
+        for (int i = 0; i < height - row, i++) {
+          for (int j = 0; j < width; j++) {
+            drawText(" ", i, j);
           }
         }
       }
+    }
   }
 
 
