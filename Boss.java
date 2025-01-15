@@ -1,26 +1,26 @@
-public class Thug extends Adventurer{
+public class Boss extends Adventurer{
   int anger, angerMax;
   String preferredWeapon;
 
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
-  public Thug(String name, int hp, String weapon){
+  public Boss(String name, int hp, String weapon){
     super(name,hp);
     angerMax = 12;
     anger = angerMax/2;
     preferredWeapon = weapon;
   }
 
-  public Thug(String name, int hp){
+  public Boss(String name, int hp){
     this(name,hp,"Baseball Bat");
   }
 
-  public Thug(String name){
+  public Boss(String name){
     this(name,30);
   }
 
-  public Thug(){
-    this("Thug");
+  public Boss(){
+    this("Boss");
   }
 
   /*The next 8 methods are all required because they are abstract:*/
