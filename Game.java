@@ -15,9 +15,14 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-        for (int i = 0; i < HEIGHT; i++) {
+    for (int i = 0; i < WIDTH; i++) {
+      for (int j = 1; j < HEIGHT + 4; j++) {
+        System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
+        Text.go(j+1, i);
+      }
 
-            if (i == 0 || i == 29) {
+            /*if (i == 0 || i == 29) {
+
                 Text.go(i+1, 1);
                 for (int j = 0; j < WIDTH; j++) {
                   System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
@@ -27,8 +32,8 @@ public class Game{
                 System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
                 Text.go(i+1,80);
                 System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
-            }
-        }
+            }*/
+    }
   }
 
   //Display a line of text starting at
