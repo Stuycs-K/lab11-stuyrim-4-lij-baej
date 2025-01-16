@@ -15,24 +15,18 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-    for (int i = 0; i < WIDTH; i++) {
-      for (int j = 1; j < HEIGHT + 4; j++) {
+    for (int i = 0; i < HEIGHT; i++) {
+      if (i == 0 || i == 29) {
+        Text.go(i+1, 0);
+        for (int j = 0; j < WIDTH; j++) {
+          System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
+        }
+      } else {
+        Text.go(i+1,1);
         System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
-        Text.go(j+1, i);
-      }
-
-            /*if (i == 0 || i == 29) {
-
-                Text.go(i+1, 1);
-                for (int j = 0; j < WIDTH; j++) {
-                  System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
-                }
-            } else {
-                Text.go(i+1,1);
-                System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
-                Text.go(i+1,80);
-                System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
-            }*/
+        Text.go(i+1,80);
+        System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
+            }
     }
   }
 
@@ -103,13 +97,13 @@ public class Game{
       for (int i = 0; i < 3; i++) {
         for (int j = 0; j < party.size(); j++) {
           if (i == 0) {
-            TextBox(startRow + i, 80/(party.size()) * j + 2, 80/(party.size()), 3, party.get(j).getName());
+            TextBox(startRow + i, 80/(party.size() + 1) * (j+1), 80/(party.size() + 1), 3, party.get(j).getName());
           }
           else if (i == 1) {
-            TextBox(startRow + i, 80/(party.size()) * j + 2, 80/(party.size()), 3, "HP: " + party.get(j).getHP());
+            TextBox(startRow + i, 80/(party.size() + 1) * (j+1), 80/(party.size() + 1), 3, "HP: " + party.get(j).getHP());
           }
           else {
-            TextBox(startRow + i, 80/(party.size()) * j + 2, 80/(party.size()), 3, party.get(j).getSpecialMax() + ": " + party.get(j).getSpecial());
+            TextBox(startRow + i, 80/(party.size() + 1) * (j+1), 80/(party.size() + 1), 3, party.get(j).getSpecialName() + ": " + party.get(j).getSpecial());
           }
         }
       }
@@ -148,7 +142,7 @@ public class Game{
 
     drawParty(party, 2);
 
-    drawParty(enemies, 24);
+    drawParty(enemies, 19);
 
   }
 
