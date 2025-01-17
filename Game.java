@@ -142,7 +142,7 @@ public class Game{
 
     drawParty(party, 2);
 
-    drawParty(enemies, 19);
+    drawParty(enemies, 22);
 
   }
 
