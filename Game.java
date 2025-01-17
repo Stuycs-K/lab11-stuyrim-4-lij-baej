@@ -100,7 +100,7 @@ public class Game{
             TextBox(startRow + i, 80/(party.size() + 1) * (j+1), 80/(party.size()), 3, party.get(j).getName());
           }
           else if (i == 1) {
-            TextBox(startRow + i, 80/(party.size() + 1) * (j+1), 80/(party.size()), 3, "HP: " + party.get(j).getHP());
+            TextBox(startRow + i, 80/(party.size() + 1) * (j+1), 80/(party.size()), 3, "HP: " + colorByPercent(party.get(j).getHP(), party.get(j).getmaxHP());
           }
           else {
             TextBox(startRow + i, 80/(party.size() + 1) * (j+1), 80/(party.size()), 3, party.get(j).getSpecialName() + ": " + party.get(j).getSpecial());
