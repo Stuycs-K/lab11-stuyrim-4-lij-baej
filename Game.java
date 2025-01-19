@@ -90,6 +90,9 @@ public class Game{
     *Caffeine: 20 Mana: 10   Snark: 1
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
     */
+
+    //TextBox(int row, int col, int width, int height, String text)
+
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
@@ -97,13 +100,13 @@ public class Game{
       for (int i = 0; i < 3; i++) {
         for (int j = 0; j < party.size(); j++) {
           if (i == 0) {
-            TextBox(startRow + i, 80/(party.size() + 1) * (j+1), 80/(party.size()), 3, party.get(j).getName());
+            TextBox(startRow + i, (80/(party.size()) * (j+1) - (80/party.size() - 2)   ), 80/(party.size()), 3, party.get(j).getName());
           }
           else if (i == 1) {
-            TextBox(startRow + i, 80/(party.size() + 1) * (j+1), 80/(party.size()), 3, "HP: " + colorByPercent(party.get(j).getHP(), party.get(j).getmaxHP());
+            TextBox(startRow + i, (80/(party.size()) * (j+1) - (80/party.size() - 2)   ), 80/(party.size()), 3, "HP: " + colorByPercent(party.get(j).getHP(), party.get(j).getmaxHP()));
           }
           else {
-            TextBox(startRow + i, 80/(party.size() + 1) * (j+1), 80/(party.size()), 3, party.get(j).getSpecialName() + ": " + party.get(j).getSpecial());
+            TextBox(startRow + i, (80/(party.size()) * (j+1) - (80/party.size() - 2)   ), 80/(party.size()), 3, party.get(j).getSpecialName() + ": " + party.get(j).getSpecial());
           }
         }
       }
