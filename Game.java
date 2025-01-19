@@ -69,17 +69,14 @@ public class Game{
       }
     } else {
       drawText(text, row, col);
+      if (text.length() < width) {
+        System.out.print(" ".repeat(width - text.length()));
+      }
       if (row < height) {
-        for (int i = 0; i < height - row; i++) {
-          for (int j = 0; j < width; j++) {
-            drawText(" ", i, j);
-          }
-        }
+        TextBox(row + 1, col, width, height, " ");
       }
     }
   }
-
-
 
 
     //return a random adventurer (choose between all available subclasses)
@@ -107,13 +104,13 @@ public class Game{
       for (int i = 0; i < 3; i++) {
         for (int j = 0; j < party.size(); j++) {
           if (i == 0) {
-            TextBox(startRow + i, (80/(party.size()) * (j+1) - (80/party.size() - 2)   ), 80/(party.size()), 3, party.get(j).getName());
+            drawText(party.get(j).getName(), startRow + i, (80/(party.size()) * (j+1) - (80/party.size() - 2)   ));
           }
           else if (i == 1) {
-            TextBox(startRow + i, (80/(party.size()) * (j+1) - (80/party.size() - 2)   ), 80/(party.size()), 3, "HP: " + colorByPercent(party.get(j).getHP(), party.get(j).getmaxHP()));
+            drawText("HP: " + colorByPercent(party.get(j).getHP(), party.get(j).getmaxHP()), startRow + i, (80/(party.size()) * (j+1) - (80/party.size() - 2)   ));
           }
           else {
-            TextBox(startRow + i, (80/(party.size()) * (j+1) - (80/party.size() - 2)   ), 80/(party.size()), 3, party.get(j).getSpecialName() + ": " + party.get(j).getSpecial());
+            drawText(party.get(j).getSpecialName() + ": " + party.get(j).getSpecial(), startRow + i, (80/(party.size()) * (j+1) - (80/party.size() - 2)   ));
           }
         }
       }
@@ -257,7 +254,7 @@ public class Game{
         TextBox(startRow, 2, 78, 16, playerMove);
         startRow += 2;
       } else {
-        TextBox(startRow, 2,788, 16, party.get(whichOpponent).getName() + " is dead");
+        TextBox(startRow, 2,78, 16, party.get(whichOpponent).getName() + " is dead");
         startRow++;
       }
 
@@ -266,6 +263,7 @@ public class Game{
           //This is a player turn.
           //Decide where to draw the following prompt:
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit: ";
+          TextBox(8, 2, 78, 16, " ");
           drawText(prompt, startRow, 2);
           
         }else{
@@ -301,19 +299,19 @@ public class Game{
             enemyMove = enemies.get(whichOpponent).support();
           }
 
-          TextBox(startRow, 2, 88, 16, enemyMove);
+          TextBox(startRow, 2, 78, 16, enemyMove);
           startRow++;
 
 
           //Decide where to draw the following prompt:
           String prompt = "press enter to see next turn";
-          TextBox(startRow, 2, 88, 16, prompt);
+          TextBox(startRow, 2, 78, 16, prompt);
           startRow++;
 
 
           whichOpponent++;
         } else {
-          TextBox(startRow, 2, 88, 16, enemies.get(whichOpponent).getName() + " is dead");
+          TextBox(startRow, 2, 78, 16, enemies.get(whichOpponent).getName() + " is dead");
         }
 
       }//end of one enemy.
@@ -327,7 +325,7 @@ public class Game{
         partyTurn=true;
         //display this prompt before player's turn
         String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-        TextBox(8, 2, 88, 16, prompt);
+        TextBox(8, 2, 78, 16, prompt);
       }
 
       //display the updated screen after input has been processed.
