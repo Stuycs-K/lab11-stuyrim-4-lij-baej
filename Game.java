@@ -16,17 +16,24 @@ public class Game{
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     for (int i = 0; i < HEIGHT; i++) {
-      if (i == 0 || i == 29) {
+      if (i == 0 || i == 29 || i == 6 || i == 23 ) {
         Text.go(i+1, 0);
         for (int j = 0; j < WIDTH; j++) {
-          System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
+          System.out.print(Text.colorize(" ",BORDER_COLOR, BORDER_BACKGROUND));
         }
       } else {
         Text.go(i+1,1);
-        System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
+        System.out.print(Text.colorize(" ",BORDER_COLOR, BORDER_BACKGROUND));
+
+        if (i > 6 && i < 23){
+          Text.go(i+1,40);
+          System.out.print(Text.colorize(" ",BORDER_COLOR, BORDER_BACKGROUND));
+        }
+
+
         Text.go(i+1,80);
-        System.out.print(Text.colorize(".",BORDER_COLOR, BORDER_BACKGROUND));
-            }
+        System.out.print(Text.colorize(" ",BORDER_COLOR, BORDER_BACKGROUND));
+        }
     }
   }
 
@@ -145,7 +152,7 @@ public class Game{
 
     drawParty(party, 3);
 
-    drawParty(enemies, 22);
+    drawParty(enemies, 26);
 
   }
 
