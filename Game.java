@@ -403,11 +403,13 @@ public class Game{
       }
 
       if(enemies.size() == 0) {
-        drawText("YOU WIN !!!!", 15, 34);
+        drawText("YOU WIN !!!!", 15, 17);
+        break;
       }
 
       if(party.size() == 0) {
-        drawText("You are defeated", 15, 32);
+        drawText("You are defeated", 15, 16);
+        break;
       }
 
       //display the updated screen after input has been processed.
