@@ -242,10 +242,10 @@ public class Game{
     //display this prompt at the start of the game.
     String preprompt = ""+party.get(whichPlayer)+"'s turn: attack/special/support/quit";
     TextBox(8, 2, 37, 16, preprompt);
-    Text.go(9,2);
+    Text.go(10,2);
 
     //keep track of starting row
-    int startRow = 9;
+    int startRow = 10;
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
 
@@ -265,7 +265,7 @@ public class Game{
 
         drawScreen(party, enemies);
         TextBox(startRow, 2, 37, 16, party.get(whichPlayer)+"'s turn: attack/special/support/quit");
-        startRow++;
+        startRow+=2;
       }
 
       //Read user input
@@ -281,19 +281,19 @@ public class Game{
 
         String playerMove = "";
         if (party.get(whichPlayer).getHP() > 0) {
-          int num = Integer.parseInt(input.substring(input.length() -1, input.length()));
+          //int num = Integer.parseInt(input.substring(input.length() -1, input.length()));
         //Process user input for the last Adventurer:
         if(input.startsWith("attack") || input.startsWith("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          playerMove += party.get(whichPlayer).attack(enemies.get(num));
+          playerMove += party.get(whichPlayer).attack(enemies.get(whichOpponent));
         }
         else if(input.startsWith("special") || input.startsWith("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          playerMove += party.get(whichPlayer).specialAttack(enemies.get(num));
+          playerMove += party.get(whichPlayer).specialAttack(enemies.get(whichOpponent));
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           //"support 0" or "su 0" or "su 2" etc.
@@ -311,9 +311,8 @@ public class Game{
         if (error == false){
           whichPlayer++;
           TextBox(startRow, 2, 37, 16, playerMove);
-          startRow += 2;
+          startRow += 3;
         }
-        startRow += 1;
 
       } else {
         party.remove(party.get(whichOpponent));
