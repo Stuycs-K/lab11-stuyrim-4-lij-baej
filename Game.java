@@ -7,6 +7,12 @@ public class Game{
   private static final int BORDER_COLOR = Text.BLACK;
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
 
+  public static ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
+  public static ArrayList<Adventurer>party = new ArrayList<>();
+
+  //list that tracks enemy that died, used for display
+  public static ArrayList<Adventurer>temporaryDied = new ArrayList<Adventurer>();
+
   public static void wait(int seconds){
   try {
     Thread.sleep(seconds * 1000);
@@ -117,6 +123,40 @@ public class Game{
       }
     }
 
+    //checks if anyone died,
+    public static String DeathCheck(Adventurer inflicting){
+      ArrayList<Adventurer>died = new ArrayList<Adventurer>();
+
+      for (Adventurer member : enemies){
+        if (member.getHP() <= 0 && !temporaryDied.contains(member)) {
+          died.add(member);
+          temporaryDied.add(member);
+          member.setHP(0);
+        }
+      }
+
+      for (Adventurer member : party){
+        if (member.getHP() <= 0 && !temporaryDied.contains(member)) {
+          died.add(member);
+          temporaryDied.add(member);
+          member.setHP(0);
+        }
+      }
+
+      if (died.size() > 0){
+        String returnString = "" + inflicting + " knocked out ";
+
+        for (Adventurer member : died){
+          returnString += (member + ", ");
+        }
+        returnString = returnString.substring(0, returnString.length()-2) + ".";
+
+        return returnString;
+      }else{
+        return "";
+      }
+
+    }
 
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -225,7 +265,6 @@ public class Game{
     //Make an ArrayList of Adventurers and add 1-3 enemies to it.
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
-    ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     int count = (int)(Math.random() * 3);
     if (count == 0) {
       Adventurer boss = new Boss();
@@ -238,7 +277,6 @@ public class Game{
 
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
-    ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     Adventurer one = new Karen();
     Adventurer two = new Thug();
@@ -259,6 +297,8 @@ public class Game{
 
     //You can add parameters to draw screen!
     drawScreen(party, enemies);//initial state.
+
+
 
     //Main loop
 
@@ -346,7 +386,9 @@ public class Game{
         //You should decide when you want to re-ask for user input
         //If no errors:
         if (error == false){
+          playerMove += " " + DeathCheck(party.get(whichPlayer));
           whichPlayer++;
+
           TextBox(startRow, 2, 37, 23 - startRow, playerMove);
           startRow += StringLineCalculator(playerMove);
         }
@@ -407,7 +449,7 @@ public class Game{
             enemyMove = enemies.get(whichOpponent).support();
           }
 
-
+          enemyMove += " " + DeathCheck(enemies.get(whichOpponent));
           TextBox(startRow, 42, 37, 23 - startRow, enemyMove);
           startRow += StringLineCalculator(enemyMove);
 

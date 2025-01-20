@@ -56,9 +56,18 @@ public class Karen extends Adventurer{
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
       int damage = (10);
-      other.applyDamage(damage);
-      return "Oh, no, no, no. This is unacceptable. I need to speak to your manager, right now! "+ this + " called her Manager!" +
-      " She knocked out "+other+" dealing "+ damage +" points of damage.";
+
+      for (Adventurer member : Game.enemies){
+        member.applyDamage(50);
+      }
+
+      for (Adventurer member : Game.party){
+        member.applyDamage(damage / 2);
+      }
+
+      return "Oh, no, no, no. This is unacceptable. I need to speak to your manager, right now! "+ this + " unleashes a high-pitched, ear-splitting shriek, dealing " + damage +" points of damage to enemy party and "+ (damage / 2) + " points of damage to own party.";
+
+
     }else{
       return "What do you mean my Manager is not here?. Instead, "+attack(other);
     }
