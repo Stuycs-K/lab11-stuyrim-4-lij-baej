@@ -160,6 +160,20 @@ public class Game{
 
   }
 
+  
+  public static Adventurer randomEnemy() {
+    int random = (int)(Math.random() * 3);
+    if (random == 0) {
+      return new Karen();
+    } if (random == 1) {
+      return new DrugDealer();
+    }
+    else{
+      return new Thug();
+    }
+  }
+
+
   public static String userInput(Scanner in){
       //Move cursor to prompt location
 
@@ -280,7 +294,7 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          playerMove += party.get(whichPlayer).support(enemies.get(num));
+          playerMove += party.get(whichPlayer).support();
         }else {
           TextBox(startRow, 2, 37, 16, "Error! Please enter valid move.");
           error = true;
