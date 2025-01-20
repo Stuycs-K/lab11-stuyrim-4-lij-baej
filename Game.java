@@ -248,7 +248,7 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su /q";
+    String preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su/q";
     TextBox(8, 2, 37, 16, preprompt);
     Text.go(9,2);
 
@@ -272,7 +272,7 @@ public class Game{
 
 
         drawScreen(party, enemies);
-        TextBox(startRow, 2, 37, 16, party.get(whichPlayer)+"'s turn: a/sp/su /q");
+        TextBox(startRow, 2, 37, 16, party.get(whichPlayer)+"'s turn: a/sp/su/q");
         startRow++;
       }
 
@@ -289,18 +289,20 @@ public class Game{
 
         String playerMove = "";
         if (party.get(whichPlayer).getHP() > 0) {
-          int num = Integer.parseInt(input.substring(input.length() -1, input.length()));
+          int num;
         //Process user input for the last Adventurer:
         if(input.startsWith("attack") || input.startsWith("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          num = Integer.parseInt(input.substring(input.length() -1, input.length()));
           playerMove += party.get(whichPlayer).attack(enemies.get(num));
         }
         else if(input.startsWith("special") || input.startsWith("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          num = Integer.parseInt(input.substring(input.length() -1, input.length()));
           playerMove += party.get(whichPlayer).specialAttack(enemies.get(num));
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
@@ -321,7 +323,6 @@ public class Game{
           TextBox(startRow, 2, 37, 16, playerMove);
           startRow += StringLineCalculator(playerMove);
         }
-        startRow += 1;
 
       } else {
         party.remove(party.get(whichOpponent));
