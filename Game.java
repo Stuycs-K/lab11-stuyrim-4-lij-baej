@@ -64,16 +64,16 @@ public class Game{
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     if (text.length() > width) {
       drawText(text.substring(0, width), row, col);
-      if (row < height) {
-        TextBox(row + 1, col, width, height, text.substring(width));
+      if (row < height - row) {
+        TextBox(row + 1, col, width, height + 1, text.substring(width));
       }
     } else {
       drawText(text, row, col);
       if (text.length() < width) {
         System.out.print(" ".repeat(width - text.length()));
       }
-      if (row < height) {
-        TextBox(row + 1, col, width, height, " ");
+      if (row < height - row) {
+        TextBox(row + 1, col, width, height - 1, " ");
       }
     }
   }
@@ -219,8 +219,9 @@ public class Game{
     int startRow = 9;
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
-      if (startRow > 23) {
+      if (startRow > 21) {
         startRow = 8;
+        TextBox(startRow, 2, 78, 16, " ");
       }
       //Read user input
       Text.go(startRow,2);
