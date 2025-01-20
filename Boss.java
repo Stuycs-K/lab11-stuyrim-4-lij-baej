@@ -45,7 +45,7 @@ public class Boss extends Adventurer{
     int damage = (int)(Math.random()*6)+2;
     other.applyDamage(damage);
     restoreSpecial(2);
-    return "Heh, gotcha, didn’t I? Just... just don’t make me swing again! "+ this + " striked their "+preferredWeapon+ " and he knocked out "+ other + " and dealt "+ damage +
+    return "Heh, gotcha, didn't I? Just... just don't make me swing again! "+ this + " striked their "+preferredWeapon+ " and he knocked out "+ other + " and dealt "+ damage +
     " points of damage.";
   }
 
@@ -57,7 +57,7 @@ public class Boss extends Adventurer{
       setSpecial(getSpecial()-8);
       int damage = (15);
       other.applyDamage(damage);
-      return "This is what you get for messin' with me, buddy! A little liquid courage for ya! " + this + " unzips his pants and aims to urinate toward "+ other +" , laughing uncontrollably, dealing "+ damage +" points of damage. Yuck!";
+      return "This is what you get for messin' with me, buddy! A little liquid courage for ya! " + this + " unzips his pants and aims to urinate toward "+ other +", laughing uncontrollably, dealing "+ damage +" points of damage. Yuck!";
     }else{
       return "How about bit of this? "+attack(other);
     }
@@ -73,7 +73,7 @@ public class Boss extends Adventurer{
   public String support(){
     int hp = 1;
     setHP(getHP()+hp);
-    return "Yeah, I'm definitely ready for this. Let's get crazy, shall we? "+ this+" yells out to restore"+restoreSpecial((int)(Math.random()*1)+1)+" "
+    return "I’m feeling it now. Nothing can slow me down after a drink like that! Let's get crazy, shall we? "+ this+" chugs gallon of whisky to restore "+restoreSpecial((int)(Math.random()*1)+1)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
 }
