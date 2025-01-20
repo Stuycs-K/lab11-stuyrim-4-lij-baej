@@ -203,8 +203,15 @@ public class Game{
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
-    Adventurer boss = new Boss();
-    enemies.add(boss);
+    int count = (int)(Math.random() * 3); 
+    if (count == 0) {
+      Adventurer boss = new Boss();
+      enemies.add(boss);
+    } else {
+      for (int i = 0; i <= count; i++) {
+        enemies.add(randomEnemy());
+      }
+    }
 
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
