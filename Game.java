@@ -255,7 +255,10 @@ public class Game{
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
 
 
-      if (startRow > 20) {
+      if (startRow > 22) {
+        wait(1/3);
+        TextBox(8, 2, 37, 13, " ");
+        Text.go(8, 2);
         startRow = 8;
       }
 
@@ -278,15 +281,29 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          num = Integer.parseInt(input.substring(input.length() -1, input.length()));
-          playerMove += party.get(whichPlayer).attack(enemies.get(num));
+          try {
+            num = Integer.parseInt(input.substring(input.length() -1, input.length()));
+            playerMove += party.get(whichPlayer).attack(enemies.get(num));
+          }
+          catch (NumberFormatException e) {
+            TextBox(startRow, 2, 37, 23 - startRow, "Error! Please add integer value to target enemy");
+            startRow+=2;
+            error = true;
+          }
         }
         else if(input.startsWith("special") || input.startsWith("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          num = Integer.parseInt(input.substring(input.length() -1, input.length()));
-          playerMove += party.get(whichPlayer).specialAttack(enemies.get(num));
+          try {
+            num = Integer.parseInt(input.substring(input.length() -1, input.length()));
+            playerMove += party.get(whichPlayer).specialAttack(enemies.get(num));
+          }
+          catch (NumberFormatException e)  {
+            TextBox(startRow, 2, 37, 23 - startRow, "Error! Please enter integer value after attack to target enemy");
+            startRow+=2;
+            error = true;
+          }
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           //"support 0" or "su 0" or "su 2" etc.
@@ -297,6 +314,7 @@ public class Game{
           playerMove += party.get(whichPlayer).support();
         }else {
           TextBox(startRow, 2, 37, 23 - startRow, "Error! Please enter valid move.");
+          startRow++;
           error = true;
         }
         //You should decide when you want to re-ask for user input
