@@ -105,11 +105,26 @@ public class Game{
     */
 
     //TextBox(int row, int col, int width, int height, String text)
+    public static void clearPartyMenu(){
+      for (int i = 1; i < 30; i ++){
+        if ((i > 2 && i < 6) || (i > 25 && i < 29)){
+          for (int j = 2; j < 80; j ++){
+            Text.go(i, j);
+            System.out.print(" ");
+          }
+        }
+
+      }
+    }
+
 
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+
       for (int i = 0; i < 3; i++) {
         for (int j = 0; j < party.size(); j++) {
           if (i == 0) {
@@ -123,6 +138,9 @@ public class Game{
           }
         }
       }
+
+
+
     }
 
 
@@ -433,7 +451,7 @@ public class Game{
         drawText("You are defeated", 15, 16);
         break;
       }
-
+      clearPartyMenu();
       //display the updated screen after input has been processed.
       drawScreen(party, enemies);
 
