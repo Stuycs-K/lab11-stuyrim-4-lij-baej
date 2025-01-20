@@ -253,7 +253,7 @@ public class Game{
     Text.go(9,2);
 
     //keep track of starting row
-    int startRow = 10;
+    int startRow = 9;
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
 
