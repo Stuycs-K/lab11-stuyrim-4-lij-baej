@@ -147,10 +147,6 @@ public class Game{
     // otherwise : white
   }
 
-
-
-
-
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
@@ -264,18 +260,19 @@ public class Game{
 
         String playerMove = "";
         if (party.get(whichPlayer).getHP() > 0) {
+          int num = Integer.parseInt(input.substring(input.length() -1, input.length()));
         //Process user input for the last Adventurer:
-        if(input.equals("attack") || input.equals("a")){
+        if(input.startsWith("attack") || input.startsWith("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          playerMove += party.get(whichPlayer).attack(enemies.get(whichOpponent));
+          playerMove += party.get(whichPlayer).attack(enemies.get(num));
         }
-        else if(input.equals("special") || input.equals("sp")){
+        else if(input.startsWith("special") || input.startsWith("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          playerMove += party.get(whichPlayer).specialAttack(enemies.get(whichOpponent));
+          playerMove += party.get(whichPlayer).specialAttack(enemies.get(num));
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           //"support 0" or "su 0" or "su 2" etc.
@@ -283,7 +280,7 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          playerMove += party.get(whichPlayer).support(enemies.get(whichOpponent));
+          playerMove += party.get(whichPlayer).support(enemies.get(num));
         }else {
           TextBox(startRow, 2, 37, 16, "Error! Please enter valid move.");
           error = true;
