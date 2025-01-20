@@ -157,7 +157,7 @@ public class Game{
 
   }
 
-  
+
   public static Adventurer randomEnemy() {
     int random = (int)(Math.random() * 3);
     if (random == 0) {
@@ -208,7 +208,7 @@ public class Game{
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
-    int count = (int)(Math.random() * 3); 
+    int count = (int)(Math.random() * 3);
     if (count == 0) {
       Adventurer boss = new Boss();
       enemies.add(boss);
@@ -289,6 +289,10 @@ public class Game{
             TextBox(startRow, 2, 37, 23 - startRow, "Error! Please add integer value to target enemy");
             startRow+=2;
             error = true;
+          } catch (IndexOutOfBoundsException e){
+            TextBox(startRow, 2, 37, 23 - startRow, "Error! Please add valid integer value!");
+            startRow+=2;
+            error = true;
           }
         }
         else if(input.startsWith("special") || input.startsWith("sp")){
@@ -301,6 +305,10 @@ public class Game{
           }
           catch (NumberFormatException e)  {
             TextBox(startRow, 2, 37, 23 - startRow, "Error! Please enter integer value after attack to target enemy");
+            startRow+=2;
+            error = true;
+          } catch (IndexOutOfBoundsException e){
+            TextBox(startRow, 2, 37, 23 - startRow, "Error! Please add valid integer value!");
             startRow+=2;
             error = true;
           }
