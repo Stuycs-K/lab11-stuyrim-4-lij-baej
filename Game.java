@@ -269,8 +269,6 @@ public class Game{
         startRow += 2;
 
       } else {
-        TextBox(startRow, 2,78, 16, party.get(whichOpponent).getName() + " is dead");
-        startRow++;
         party.remove(party.get(whichOpponent));
       }
 
@@ -330,7 +328,7 @@ public class Game{
 
           whichOpponent++;
         } else {
-          TextBox(startRow, 2, 78, 16, enemies.get(whichOpponent).getName() + " is dead");
+          enemies.remove(enemies.get(whichOpponent));
         }
 
       }//end of one enemy.
@@ -347,6 +345,14 @@ public class Game{
         String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
         TextBox(startRow, 2, 78, 16, prompt);
         startRow++;
+      }
+
+      if(enemies.size() == 0) {
+        drawText("YOU WIN !!!!", 15, 34);
+      }
+
+      if(party.size() == 0) {
+        drawText("You are defeated", 15, 32);
       }
 
       //display the updated screen after input has been processed.
