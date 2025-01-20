@@ -212,13 +212,20 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit: ";
+    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
     drawText(preprompt, 8, 2);
+    Text.go(9,2);
+    
+    //keep track of starting row
+    int startRow = 9;
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
+      if (startRow > 23) {
+        startRow = 8;
+      }
       //Read user input
+      Text.go(startRow,2);
       input = userInput(in);
-      int startRow = 9;
 
       //example debug statment
       //TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
@@ -263,14 +270,15 @@ public class Game{
           //This is a player turn.
           //Decide where to draw the following prompt:
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit: ";
-          TextBox(8, 2, 78, 16, " ");
-          drawText(prompt, startRow, 2);
+          TextBox(startRow, 2, 78, 16, prompt);
+          startRow++;
           
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "press enter to see monster's turn";
-          TextBox(startRow, 2, 78, 16, prompt);
+          TextBox(8, 2, 78, 18, prompt);
+          startRow = 9; 
 
 
           partyTurn = false;
@@ -280,7 +288,7 @@ public class Game{
       }else{
         if (enemies.get(whichOpponent).getHP() > 0) {
           //not the party turn!
-          whichPlayer = (int)(Math.random()*(party.size()+1));
+          whichPlayer = (int)(Math.random()*(party.size()));
 
           //enemy attacks a randomly chosen person with a randomly chosen attack.z`
           //Enemy action choices go here!
@@ -298,6 +306,7 @@ public class Game{
           else {
             enemyMove = enemies.get(whichOpponent).support();
           }
+
 
           TextBox(startRow, 2, 78, 16, enemyMove);
           startRow++;
@@ -321,11 +330,13 @@ public class Game{
         //THIS BLOCK IS TO END THE ENEMY TURN
         //It only triggers after the last enemy goes.
         whichPlayer = 0;
+        whichOpponent = 0;
         turn++;
         partyTurn=true;
         //display this prompt before player's turn
         String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-        TextBox(8, 2, 78, 16, prompt);
+        TextBox(startRow, 2, 78, 16, prompt);
+        startRow++;
       }
 
       //display the updated screen after input has been processed.
