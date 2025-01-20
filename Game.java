@@ -223,7 +223,7 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = ""+party.get(whichPlayer)+"'s turn: attack/special/quit";
+    String preprompt = ""+party.get(whichPlayer)+"'s turn: attack/special/support/quit";
     TextBox(8, 2, 37, 16, preprompt);
     Text.go(9,2);
 
@@ -244,7 +244,7 @@ public class Game{
 
 
         drawScreen(party, enemies);
-        TextBox(startRow, 2, 37, 16, preprompt);
+        TextBox(startRow, 2, 37, 16, party.get(whichPlayer)+"'s turn: attack/special/support/quit");
         startRow++;
       }
 
@@ -295,8 +295,6 @@ public class Game{
         startRow += 1;
 
       } else {
-        TextBox(startRow, 2,37, 16, party.get(whichOpponent).getName() + " is dead");
-        startRow++;
         party.remove(party.get(whichOpponent));
       }
 
@@ -366,7 +364,7 @@ public class Game{
 
           whichOpponent++;
         } else {
-          TextBox(startRow, 42, 37, 16, enemies.get(whichOpponent).getName() + " is dead");
+          enemies.remove(enemies.get(whichOpponent));
         }
 
       }//end of one enemy.
