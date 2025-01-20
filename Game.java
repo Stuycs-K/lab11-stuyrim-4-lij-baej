@@ -231,7 +231,10 @@ public class Game{
     int startRow = 9;
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
+
       wait(1);
+
+
       if (startRow > 20) {
         startRow = 8;
 
@@ -304,6 +307,7 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
+          preprompt = ""+party.get(whichPlayer)+"'s turn: attack/special/quit";
           TextBox(startRow, 2, 37, 16, preprompt);
           startRow++;
 
@@ -394,6 +398,7 @@ public class Game{
 
 
         drawScreen(party, enemies);
+        preprompt = ""+party.get(whichPlayer)+"'s turn: attack/special/quit";
         TextBox(startRow, 2, 37, 16, preprompt);
         startRow++;
 
