@@ -192,6 +192,14 @@ public class Game{
     Text.go(32,1);
   }
 
+  public static int StringLineCalculator(String input){
+    if (input.length() > 38) {
+      return (1 + StringLineCalculator(input.substring(38)));
+    }else{
+      return (1);
+    }
+  }
+
   public static void run(){
     //Clear and initialize
     Text.hideCursor();
@@ -240,7 +248,7 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = ""+party.get(whichPlayer)+"'s turn: attack/special/support/quit";
+    String preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su /q";
     TextBox(8, 2, 37, 16, preprompt);
     Text.go(10,2);
 
@@ -264,8 +272,8 @@ public class Game{
 
 
         drawScreen(party, enemies);
-        TextBox(startRow, 2, 37, 16, party.get(whichPlayer)+"'s turn: attack/special/support/quit");
-        startRow+=2;
+        TextBox(startRow, 2, 37, 16, party.get(whichPlayer)+"'s turn: a/sp/su /q");
+        startRow++;
       }
 
       //Read user input
@@ -311,7 +319,7 @@ public class Game{
         if (error == false){
           whichPlayer++;
           TextBox(startRow, 2, 37, 16, playerMove);
-          startRow += 3;
+          startRow += StringLineCalculator(playerMove);
         }
 
       } else {
@@ -322,7 +330,7 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          preprompt = ""+party.get(whichPlayer)+"'s turn: attack/special/quit";
+          preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su /q";
           TextBox(startRow, 2, 37, 16, preprompt);
           startRow++;
 
@@ -373,7 +381,7 @@ public class Game{
 
 
           TextBox(startRow, 42, 37, 16, enemyMove);
-          startRow+=2;
+          startRow += StringLineCalculator(enemyMove);
 
 
           //Decide where to draw the following prompt:
@@ -413,7 +421,7 @@ public class Game{
 
 
         drawScreen(party, enemies);
-        preprompt = ""+party.get(whichPlayer)+"'s turn: attack/special/quit";
+        preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su /q";
         TextBox(startRow, 2, 37, 16, preprompt);
         startRow++;
 

@@ -45,8 +45,8 @@ public class Karen extends Adventurer{
     int damage = (int)(Math.random()*3)+1;
     other.applyDamage(damage);
     restoreSpecial(2);
-    return this + " attacked "+ other + " and dealt "+ damage +
-    " points of damage. She then laughed obnoxiously.";
+    return "Let me show you how it's done, sweetie! "+ this + " attacked "+ other + " and dealt "+ damage +
+    " points of damage.";
   }
 
   /*Deal 3-12 damage to opponent, only if demands is high enough.
@@ -57,24 +57,22 @@ public class Karen extends Adventurer{
       setSpecial(getSpecial()-8);
       int damage = (10);
       other.applyDamage(damage);
-      return this + " called her Manager!" +
+      return "Oh, no, no, no. This is unacceptable. I need to speak to your manager, right now! "+ this + " called her Manager!" +
       " She knocked out "+other+" dealing "+ damage +" points of damage.";
     }else{
-      return "Not enough demands to Call the Manager. Instead "+attack(other);
+      return "What do you mean my Manager is not here?. Instead, "+attack(other);
     }
 
   }
   /*Restores 5 special to other*/
   public String support(Adventurer other){
-    return "Pretends to help "+other+" and restores "
-    + other.restoreSpecial((int)(Math.random()*1)+1)+" "+other.getSpecialName();
+    return "You wouldn’t want to disappoint me, would you? " + this + " restores " + other + "'s " + other.restoreSpecial((int)(Math.random()*1)+1)+" "+other.getSpecialName();
   }
 
   /*Restores 6 special and 1 hp to self.*/
   public String support(){
     int hp = 1;
     setHP(getHP()+hp);
-    return this+" breaths in and counts from three to one, restoring "+restoreSpecial((int)(Math.random()*1)+1)+" "
-    + getSpecialName()+ " and "+hp+" HP";
+    return "It's all about self-care! "+ this + " restores " + restoreSpecial((int)(Math.random()*1)+1)+" "+ getSpecialName()+ " and "+hp+" HP";
   }
 }
