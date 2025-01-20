@@ -120,20 +120,19 @@ public class Game{
   //Use this to create a colorized number string based on the % compared to the max value.
   public static String colorByPercent(int hp, int maxHP){
     String output = String.format("%2s", hp+"")+"/"+String.format("%2s", maxHP+"");
-    int percent = (int)((hp / maxHP) * 100);
-    if (percent > 25){
-      Text.colorize(output, 31);
-    }else if (percent > 75){
-      Text.colorize(output, 33);
+    int percent = (int)(((hp * 1.0) / maxHP) * 100);
+    if (percent < 25){
+      return Text.colorize(output, Text.RED);
+    }else if (percent < 75){
+      return Text.colorize(output, Text.YELLOW);
     }else{
-      Text.colorize(output, 37);
+      return Text.colorize(output, Text.WHITE);
     }
 
     //COLORIZE THE OUTPUT IF HIGH/LOW:
     // under 25% : red
     // under 75% : yellow
     // otherwise : white
-    return output;
   }
 
 
@@ -263,6 +262,7 @@ public class Game{
       } else {
         TextBox(startRow, 2,78, 16, party.get(whichOpponent).getName() + " is dead");
         startRow++;
+        party.remove(party.get(whichOpponent));
       }
 
 
@@ -276,7 +276,7 @@ public class Game{
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
-          String prompt = "press enter to see monster's turn";
+          String prompt = "Press enter to see monster's turn";
           TextBox(8, 2, 78, 18, prompt);
           startRow = 9; 
 
@@ -313,9 +313,10 @@ public class Game{
 
 
           //Decide where to draw the following prompt:
-          String prompt = "press enter to see next turn";
+          String prompt = "Press enter to see next turn";
           TextBox(startRow, 2, 78, 16, prompt);
           startRow++;
+          input = userInput(in);
 
 
           whichOpponent++;
