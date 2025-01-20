@@ -248,7 +248,7 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su /q";
+    String preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su/q";
     TextBox(8, 2, 37, 16, preprompt);
     Text.go(9,2);
 
@@ -272,7 +272,7 @@ public class Game{
 
 
         drawScreen(party, enemies);
-        TextBox(startRow, 2, 37, 16, party.get(whichPlayer)+"'s turn: a/sp/su /q");
+        TextBox(startRow, 2, 37, 16, party.get(whichPlayer)+"'s turn: a/sp/su/q");
         startRow++;
       }
 
