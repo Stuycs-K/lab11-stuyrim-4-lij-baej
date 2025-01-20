@@ -399,6 +399,14 @@ public class Game{
 
       }
 
+      if(enemies.size() == 0) {
+        drawText("YOU WIN !!!!", 15, 34);
+      }
+
+      if(party.size() == 0) {
+        drawText("You are defeated", 15, 32);
+      }
+
       //display the updated screen after input has been processed.
       drawScreen(party, enemies);
 
