@@ -250,7 +250,7 @@ public class Game{
     //display this prompt at the start of the game.
     String preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su /q";
     TextBox(8, 2, 37, 16, preprompt);
-    Text.go(10,2);
+    Text.go(9,2);
 
     //keep track of starting row
     int startRow = 10;
@@ -289,19 +289,21 @@ public class Game{
 
         String playerMove = "";
         if (party.get(whichPlayer).getHP() > 0) {
-          //int num = Integer.parseInt(input.substring(input.length() -1, input.length()));
+          int num;
         //Process user input for the last Adventurer:
         if(input.startsWith("attack") || input.startsWith("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          playerMove += party.get(whichPlayer).attack(enemies.get(whichOpponent));
+          num = Integer.parseInt(input.substring(input.length() -1, input.length()));
+          playerMove += party.get(whichPlayer).attack(enemies.get(num));
         }
         else if(input.startsWith("special") || input.startsWith("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          playerMove += party.get(whichPlayer).specialAttack(enemies.get(whichOpponent));
+          num = Integer.parseInt(input.substring(input.length() -1, input.length()));
+          playerMove += party.get(whichPlayer).specialAttack(enemies.get(num));
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           //"support 0" or "su 0" or "su 2" etc.
