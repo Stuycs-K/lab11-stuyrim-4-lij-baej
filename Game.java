@@ -214,7 +214,7 @@ public class Game{
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
     drawText(preprompt, 8, 2);
     Text.go(9,2);
-    
+
     //keep track of starting row
     int startRow = 9;
 
@@ -231,6 +231,8 @@ public class Game{
 
       //display event based on last turn's input
       if(partyTurn){
+        boolean error = false;
+
         String playerMove = "";
         if (party.get(whichPlayer).getHP() > 0) {
         //Process user input for the last Adventurer:
@@ -252,13 +254,20 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          playerMove += party.get(whichPlayer).support();
+          playerMove += party.get(whichPlayer).support(enemies.get(whichOpponent));
+        }else {
+          drawText("Please try again", startRow, 2);
+          error = true;
         }
         //You should decide when you want to re-ask for user input
         //If no errors:
-        whichPlayer++;
-        TextBox(startRow, 2, 78, 16, playerMove);
+        if (error == false){
+          whichPlayer++;
+          TextBox(startRow, 2, 78, 16, playerMove);
+          startRow += 2;
+        }
         startRow += 2;
+
       } else {
         TextBox(startRow, 2,78, 16, party.get(whichOpponent).getName() + " is dead");
         startRow++;
@@ -272,13 +281,13 @@ public class Game{
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit: ";
           TextBox(startRow, 2, 78, 16, prompt);
           startRow++;
-          
+
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "Press enter to see monster's turn";
           TextBox(8, 2, 78, 18, prompt);
-          startRow = 9; 
+          startRow = 9;
 
 
           partyTurn = false;
