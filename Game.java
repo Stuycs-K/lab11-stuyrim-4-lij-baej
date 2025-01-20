@@ -1,9 +1,19 @@
 import java.util.*;
+import java.lang.Thread;
+
 public class Game{
   private static final int WIDTH = 80;
   private static final int HEIGHT = 30;
   private static final int BORDER_COLOR = Text.BLACK;
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
+
+  public static void wait(int seconds){
+  try {
+    Thread.sleep(seconds * 1000);
+  }
+    catch (InterruptedException e) {
+  }
+}
 
   public static void main(String[] args) {
     run();
@@ -25,11 +35,10 @@ public class Game{
         Text.go(i+1,1);
         System.out.print(Text.colorize(" ",BORDER_COLOR, BORDER_BACKGROUND));
 
-        /*if (i > 6 && i < 23){
+        if (i > 6 && i < 23){
           Text.go(i+1,40);
           System.out.print(Text.colorize(" ",BORDER_COLOR, BORDER_BACKGROUND));
-        } */
-
+        }
 
         Text.go(i+1,80);
         System.out.print(Text.colorize(" ",BORDER_COLOR, BORDER_BACKGROUND));
@@ -64,17 +73,20 @@ public class Game{
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     if (text.length() > width) {
       drawText(text.substring(0, width), row, col);
-      if (row < height - row) {
-        TextBox(row + 1, col, width, height + 1, text.substring(width));
-      }
+      TextBox(row + 1, col, width, height, text.substring(width));
+
+      /*if (row < height) {
+        TextBox(row + 1, col, width, height, text.substring(width));
+      }*/
     } else {
       drawText(text, row, col);
-      if (text.length() < width) {
+      /*if (text.length() < width) {
         System.out.print(" ".repeat(width - text.length()));
       }
       if (row < height - row) {
         TextBox(row + 1, col, width, height - 1, " ");
       }
+      */
     }
   }
 
@@ -211,24 +223,37 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
-    drawText(preprompt, 8, 2);
+    String preprompt = ""+party.get(whichPlayer)+"'s turn: attack/special/quit";
+    TextBox(8, 2, 37, 16, preprompt);
     Text.go(9,2);
 
     //keep track of starting row
     int startRow = 9;
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
-      if (startRow > 21) {
+      wait(1);
+      if (startRow > 20) {
         startRow = 8;
-        TextBox(startRow, 2, 78, 16, " ");
+
+        for (int i = 8; i < 23; i++){
+          for (int j = 2; j < 40; j++ ){
+            Text.go(i,j);
+            System.out.println(" ");
+          }
+        }
+
+
+        drawScreen(party, enemies);
+        TextBox(startRow, 2, 37, 16, preprompt);
+        startRow++;
       }
+
       //Read user input
       Text.go(startRow,2);
       input = userInput(in);
 
       //example debug statment
-      //TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      //TextBox(24,2,1,37,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       if(partyTurn){
@@ -257,18 +282,21 @@ public class Game{
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
           playerMove += party.get(whichPlayer).support(enemies.get(whichOpponent));
         }else {
-          TextBox(startRow, 2, 78, 16, "Please try again");
+          TextBox(startRow, 2, 37, 16, "Error! Please enter valid move.");
           error = true;
         }
         //You should decide when you want to re-ask for user input
         //If no errors:
         if (error == false){
           whichPlayer++;
-          TextBox(startRow, 2, 78, 16, playerMove);
+          TextBox(startRow, 2, 37, 16, playerMove);
           startRow += 2;
         }
+        startRow += 1;
 
       } else {
+        TextBox(startRow, 2,37, 16, party.get(whichOpponent).getName() + " is dead");
+        startRow++;
         party.remove(party.get(whichOpponent));
       }
 
@@ -276,15 +304,25 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit: ";
-          TextBox(startRow, 2, 78, 16, prompt);
+          TextBox(startRow, 2, 37, 16, preprompt);
           startRow++;
 
         }else{
+          wait(1);
+
+          startRow = 8;
+
+          for (int i = 8; i < 23; i++){
+            for (int j = 41; j < 80; j++ ){
+              Text.go(i,j);
+              System.out.println(" ");
+            }
+          }
+
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "Press enter to see monster's turn";
-          TextBox(8, 2, 78, 19, prompt);
+          TextBox(8, 42, 37, 18, prompt);
           startRow = 9;
 
 
@@ -315,20 +353,20 @@ public class Game{
           }
 
 
-          TextBox(startRow, 2, 78, 16, enemyMove);
-          startRow+=2 ;
+          TextBox(startRow, 42, 37, 16, enemyMove);
+          startRow+=2;
 
 
           //Decide where to draw the following prompt:
           String prompt = "Press enter to see next turn";
-          TextBox(startRow, 2, 78, 16, prompt);
+          TextBox(startRow, 42, 37, 16, prompt);
           startRow++;
           input = userInput(in);
 
 
           whichOpponent++;
         } else {
-          enemies.remove(enemies.get(whichOpponent));
+          TextBox(startRow, 42, 37, 16, enemies.get(whichOpponent).getName() + " is dead");
         }
 
       }//end of one enemy.
@@ -342,9 +380,23 @@ public class Game{
         turn++;
         partyTurn=true;
         //display this prompt before player's turn
-        String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-        TextBox(startRow, 2, 78, 16, prompt);
+
+        wait(1);
+
+        startRow = 8;
+
+        for (int i = 8; i < 23; i++){
+          for (int j = 2; j < 40; j++ ){
+            Text.go(i,j);
+            System.out.println(" ");
+          }
+        }
+
+
+        drawScreen(party, enemies);
+        TextBox(startRow, 2, 37, 16, preprompt);
         startRow++;
+
       }
 
       if(enemies.size() == 0) {
