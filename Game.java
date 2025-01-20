@@ -256,7 +256,7 @@ public class Game{
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
           playerMove += party.get(whichPlayer).support(enemies.get(whichOpponent));
         }else {
-          drawText("Please try again", startRow, 2);
+          TextBox(startRow, 2, 78, 16, "Please try again");
           error = true;
         }
         //You should decide when you want to re-ask for user input
@@ -266,7 +266,6 @@ public class Game{
           TextBox(startRow, 2, 78, 16, playerMove);
           startRow += 2;
         }
-        startRow += 2;
 
       } else {
         party.remove(party.get(whichOpponent));
@@ -284,7 +283,7 @@ public class Game{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "Press enter to see monster's turn";
-          TextBox(8, 2, 78, 18, prompt);
+          TextBox(8, 2, 78, 19, prompt);
           startRow = 9;
 
 
@@ -316,7 +315,7 @@ public class Game{
 
 
           TextBox(startRow, 2, 78, 16, enemyMove);
-          startRow++;
+          startRow+=2 ;
 
 
           //Decide where to draw the following prompt:
