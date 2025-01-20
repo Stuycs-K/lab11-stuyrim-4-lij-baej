@@ -304,7 +304,7 @@ public class Game{
             playerMove += party.get(whichPlayer).specialAttack(enemies.get(num));
           }
           catch (NumberFormatException e)  {
-            TextBox(startRow, 2, 37, 23 - startRow, "Error! Please enter integer value after attack to target enemy");
+            TextBox(startRow, 2, 37, 23 - startRow, "Error! Please enter integer value to target enemy");
             startRow+=2;
             error = true;
           } catch (IndexOutOfBoundsException e){
