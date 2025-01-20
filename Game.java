@@ -211,7 +211,7 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
     drawText(preprompt, 8, 2);
     Text.go(9,2);
     
@@ -252,7 +252,7 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-          playerMove += party.get(whichPlayer).support(enemies.get(whichOpponent));
+          playerMove += party.get(whichPlayer).support();
         }
         //You should decide when you want to re-ask for user input
         //If no errors:
@@ -269,7 +269,7 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit: ";
+          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit: ";
           TextBox(startRow, 2, 78, 16, prompt);
           startRow++;
           
