@@ -73,20 +73,17 @@ public class Game{
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     if (text.length() > width) {
       drawText(text.substring(0, width), row, col);
-      TextBox(row + 1, col, width, height, text.substring(width));
-
-      /*if (row < height) {
-        TextBox(row + 1, col, width, height, text.substring(width));
-      }*/
+      if (height > 0) {
+        TextBox(row + 1, col, width, height - 1, text.substring(width));
+      }
     } else {
       drawText(text, row, col);
-      /*if (text.length() < width) {
+      if (text.length() < width) {
         System.out.print(" ".repeat(width - text.length()));
       }
-      if (row < height - row) {
+      if (height > 0) {
         TextBox(row + 1, col, width, height - 1, " ");
       }
-      */
     }
   }
 
@@ -249,7 +246,7 @@ public class Game{
 
     //display this prompt at the start of the game.
     String preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su/q";
-    TextBox(8, 2, 37, 16, preprompt);
+    TextBox(8, 2, 37, 15, preprompt);
     Text.go(9,2);
 
     //keep track of starting row
@@ -257,23 +254,9 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
 
-      wait(1);
-
 
       if (startRow > 20) {
         startRow = 8;
-
-        for (int i = 8; i < 23; i++){
-          for (int j = 2; j < 40; j++ ){
-            Text.go(i,j);
-            System.out.println(" ");
-          }
-        }
-
-
-        drawScreen(party, enemies);
-        TextBox(startRow, 2, 37, 16, party.get(whichPlayer)+"'s turn: a/sp/su/q");
-        startRow++;
       }
 
       //Read user input
@@ -313,14 +296,14 @@ public class Game{
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
           playerMove += party.get(whichPlayer).support();
         }else {
-          TextBox(startRow, 2, 37, 16, "Error! Please enter valid move.");
+          TextBox(startRow, 2, 37, 23 - startRow, "Error! Please enter valid move.");
           error = true;
         }
         //You should decide when you want to re-ask for user input
         //If no errors:
         if (error == false){
           whichPlayer++;
-          TextBox(startRow, 2, 37, 16, playerMove);
+          TextBox(startRow, 2, 37, 23 - startRow, playerMove);
           startRow += StringLineCalculator(playerMove);
         }
 
@@ -332,12 +315,11 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su /q";
-          TextBox(startRow, 2, 37, 16, preprompt);
+          preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su/q";
+          TextBox(startRow, 2, 37, 23 - startRow, preprompt);
           startRow++;
 
         }else{
-          wait(1);
 
           startRow = 8;
 
@@ -351,7 +333,7 @@ public class Game{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "Press enter to see monster's turn";
-          TextBox(8, 42, 37, 18, prompt);
+          TextBox(8, 42, 37, 23 - startRow, prompt);
           startRow = 9;
 
 
@@ -382,16 +364,16 @@ public class Game{
           }
 
 
-          TextBox(startRow, 42, 37, 16, enemyMove);
+          TextBox(startRow, 42, 37, 23 - startRow, enemyMove);
           startRow += StringLineCalculator(enemyMove);
 
 
           //Decide where to draw the following prompt:
-          String prompt = "Press enter to see next turn";
-          TextBox(startRow, 42, 37, 16, prompt);
-          startRow++;
-          input = userInput(in);
-
+          if (whichOpponent != enemies.size()-1) {
+            String prompt = "Press enter to see next turn";
+            TextBox(startRow, 42, 37, 23 - startRow, prompt);
+            startRow++;
+          }
 
           whichOpponent++;
         } else {
@@ -409,22 +391,9 @@ public class Game{
         turn++;
         partyTurn=true;
         //display this prompt before player's turn
-
-        wait(1);
-
         startRow = 8;
-
-        for (int i = 8; i < 23; i++){
-          for (int j = 2; j < 40; j++ ){
-            Text.go(i,j);
-            System.out.println(" ");
-          }
-        }
-
-
-        drawScreen(party, enemies);
-        preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su /q";
-        TextBox(startRow, 2, 37, 16, preprompt);
+        preprompt = ""+party.get(whichPlayer)+"'s turn: a/sp/su/q";
+        TextBox(startRow, 2, 37, 23 - startRow, preprompt);
         startRow++;
 
       }
