@@ -326,7 +326,7 @@ public class Game{
         }
 
       } else {
-        party.remove(party.get(whichOpponent));
+        party.remove(party.get(whichPlayer));
       }
 
 
