@@ -50,7 +50,7 @@ public class DrugDealer extends Adventurer{
     " into " + other + " and injects an unknown liquid into them, dealing "+ damage +
     " points of damage.";
     if (other.getName().equals("Drunkard")){
-      result += " Drunkard gets an infection, he recieves 1 point of damange every turn.";
+      result += " Drunkard gets an infection, he recieves 1 point of damage every turn.";
       other.setPoison(true);
     }
     if (multiplier() != 1.0) {
@@ -72,7 +72,7 @@ public class DrugDealer extends Adventurer{
       other.setMultiplier(1.5);
       return this + " injected "+preferredWeapon+
       " with powder into " + other +
-      ". " + other + " suddenly feels rejuvenated. He now deals 150% more damage for two turns (unstackable).";
+      ". " + other + " suddenly feels rejuvenated. They now deals 150% more damage for two turns (unstackable).";
     }
     else if (getSpecial() < 5) {
       return "Not enough powder to use the strike. Instead "+attack(other);

@@ -105,7 +105,7 @@ public class Boss extends Adventurer{
     dealDotDamage();
     int hp = 1;
     setHP(getHP()+hp);
-    return "I’m feeling it now. Nothing can slow me down after a drink like that! Let's get crazy, shall we? "+ this+" chugs gallon of whisky to restore "+restoreSpecial((int)(Math.random()*1)+1)+" "
+    return "I'm feeling it now. Nothing can slow me down after a drink like that! Let's get crazy, shall we? "+ this+" chugs gallon of whisky to restore "+restoreSpecial((int)(Math.random()*1)+1)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
 }

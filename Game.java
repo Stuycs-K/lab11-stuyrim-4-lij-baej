@@ -362,7 +362,11 @@ public class Game{
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
           try {
             num = Integer.parseInt(input.substring(input.length() -1, input.length()));
-            playerMove += party.get(whichPlayer).specialAttack(enemies.get(num));
+            if(party.get(whichPlayer).getName().equals("Drug Dealer")) {
+              playerMove += party.get(whichPlayer).specialAttack(party.get(num));
+            } else {
+              playerMove += party.get(whichPlayer).specialAttack(enemies.get(num));
+            }
           }
           catch (NumberFormatException e)  {
             TextBox(startRow, 2, 37, 23 - startRow, "Error! Please enter integer value to target enemy");
@@ -455,9 +459,6 @@ public class Game{
       }else{
         if (enemies.get(whichOpponent).getHP() > 0) {
           //not the party turn!
-          if(enemies.get(whichOpponent).getName().equals("Drunkard") && enemies.get(whichOpponent).poison()) {
-            enemies.get(whichOpponent).setHP(enemies.get(whichOpponent).getHP() -1);
-          }
           whichPlayer = (int)(Math.random()*(party.size()));
 
           //enemy attacks a randomly chosen person with a randomly chosen attack.z`
@@ -475,6 +476,12 @@ public class Game{
           }
           else {
             enemyMove = enemies.get(whichOpponent).support();
+          }
+
+          if(enemies.get(0).getName().equals("Drunkard") && enemies.get(0).poison()) {
+            enemies.get(whichOpponent).setHP(enemies.get(whichOpponent).getHP() -1);
+            TextBox(8, 42, 37, 23 - startRow, "Drunkard has an infection and he looses 1 HP");
+            startRow+=2;
           }
 
           enemyMove += " " + DeathCheck(enemies.get(whichOpponent));
