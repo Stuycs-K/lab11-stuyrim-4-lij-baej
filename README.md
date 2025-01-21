@@ -15,13 +15,11 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
-
+< br / >< br / >
 
 :white_check_mark: play with a group of 3 different types adventurers
 
 :white_check_mark: play against 1-3 randomly chosen adventurer opponents
-
-:white_check_mark: use attack/special operations on your opponents
 
 :white_check_mark: use attack/special operations on your opponents
 
