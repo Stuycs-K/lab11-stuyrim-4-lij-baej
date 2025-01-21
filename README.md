@@ -56,7 +56,7 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 
 
 ### Drug Dealer
-![Alt text](drugdealer.png?raw=true "Title" )
+![Alt text](drugdealer.png?raw=true "Title" =384x384)
 
 | Stats | Description |
 | :---- | :---------- |
