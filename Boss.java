@@ -76,7 +76,7 @@ public class Boss extends Adventurer{
     if(getSpecial() >= 8){
       dealDotDamage();
       setSpecial(getSpecial()-8);
-      int damage = (int)(multiplier() * (8));
+      int damage = (int)(multiplier() * ((int)(Math.random()*10)+3));
 
       sprayList.add(other);
       other.applyDamage(damage);
@@ -97,7 +97,7 @@ public class Boss extends Adventurer{
   public String support(Adventurer other){
     dealDotDamage();
     return "Gives a encouraging yell to "+other+" and restores "
-    + other.restoreSpecial((int)(Math.random()*1)+1)+" "+other.getSpecialName();
+    + other.restoreSpecial((int)(Math.random()*2)+1)+" "+other.getSpecialName();
   }
 
   /*Restores 6 special and 1 hp to self.*/
@@ -105,7 +105,7 @@ public class Boss extends Adventurer{
     dealDotDamage();
     int hp = 1;
     setHP(getHP()+hp);
-    return "I'm feeling it now. Nothing can slow me down after a drink like that! Let's get crazy, shall we? "+ this+" chugs gallon of whisky to restore "+restoreSpecial((int)(Math.random()*1)+1)+" "
+    return "I'm feeling it now. Nothing can slow me down after a drink like that! Let's get crazy, shall we? "+ this+" chugs gallon of whisky to restore "+restoreSpecial((int)(Math.random()*2)+1)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
 }

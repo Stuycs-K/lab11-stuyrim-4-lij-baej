@@ -40,10 +40,10 @@ public class DrugDealer extends Adventurer{
     return powderMax;
   }
 
-  /*Deal 5-10 damage to opponent, restores 2 powder, if opponent is Boss, inflict poison status (-1 HP every turn)*/
+  /*Deal 2-8 damage to opponent, restores 2 powder, if opponent is Boss, inflict poison status (-1 HP every turn)*/
   public String attack(Adventurer other){
     String result;
-    int damage = (int)(multiplier() * (int)(Math.random()*5 + 5));
+    int damage = (int)(multiplier() * (int)(Math.random()*7 + 2));
     other.applyDamage(damage);
     restoreSpecial(2);
     result = this + " stabbed their unsanitary "+preferredWeapon+
@@ -91,7 +91,7 @@ public class DrugDealer extends Adventurer{
 
   /*Restores 5 - 10 hp to other */
   public String support(Adventurer other){
-    int hp = (int)(int)(Math.random()*5 + 5);
+    int hp = (int)(int)(Math.random()*6 + 5);
     other.setHP(other.getHP() + hp);
     return this + " blows some mysterious substance into " + other + "'s face and restores " + hp + " HP.";
   }
