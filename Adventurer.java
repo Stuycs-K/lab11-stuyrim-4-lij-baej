@@ -134,12 +134,8 @@ public abstract class Adventurer{
 
   //method to change multiplier
   public void setMultiplier(double multiplier) {
-    if (rounds() < 2 && multiplier() == 1) {
+    if (rounds() < 2) {
       this.multiplier = multiplier;
-    }
-    else {
-      this.multiplier = 1;
-      setRounds(0);
     }
   }
 }

@@ -46,7 +46,11 @@ public class Thug extends Adventurer{
     other.applyDamage(damage);
     restoreSpecial(2);
     if (multiplier() != 1.0) {
-      setRounds(rounds()-1);
+      setRounds(rounds()+1);
+      if (rounds() >= 2) {
+        setMultiplier(1.0);
+        setRounds(0);
+      }
     }
     return this + " attacked "+ other + " and dealt "+ damage +
     " points of damage. He then lets out a thick roar.";
@@ -61,7 +65,11 @@ public class Thug extends Adventurer{
       int damage = (int)(multiplier()*(15));
       other.applyDamage(damage);
       if (multiplier() != 1.0) {
-        setRounds(rounds()-1);
+        setRounds(rounds()+1);
+        if (rounds() >= 2) {
+          setMultiplier(1.0);
+          setRounds(0);
+        }
       }
       return this + " striked their "+preferredWeapon+ " to " + other + " He knocked out "+other+" dealing "+ damage +" points of damage.";
     }else{

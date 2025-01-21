@@ -54,7 +54,11 @@ public class DrugDealer extends Adventurer{
       other.setPoison(true);
     }
     if (multiplier() != 1.0) {
-      setRounds(rounds()-1);
+      setRounds(rounds()+1);
+      if (rounds() >= 2) {
+        setMultiplier(1.0);
+        setRounds(0);
+      }
     }
     return result;
   }
@@ -63,7 +67,7 @@ public class DrugDealer extends Adventurer{
   *Reduces powder by 5.
   */
   public String specialAttack(Adventurer other){
-    if(getSpecial() >= 5 && other.multiplier() != 1.0){
+    if(getSpecial() >= 5 && other.multiplier() == 1.0){
       setSpecial(getSpecial()-5);
       other.setMultiplier(1.5);
       return this + " injected "+preferredWeapon+

@@ -46,7 +46,11 @@ public class Karen extends Adventurer{
     other.applyDamage(damage);
     restoreSpecial(2);
     if (multiplier() != 1.0) {
-      setRounds(rounds()-1);
+      setRounds(rounds()+1);
+      if (rounds() >= 2) {
+        setMultiplier(1.0);
+        setRounds(0);
+      }
     }
     return "Let me show you how it's done, sweetie! "+ this + " attacked "+ other + " and dealt "+ damage +
     " points of damage.";
@@ -77,7 +81,11 @@ public class Karen extends Adventurer{
         }
       }
       if (multiplier() != 1.0) {
-        setRounds(rounds()-1);
+        setRounds(rounds()+1);
+        if (rounds() >= 2) {
+          setMultiplier(1.0);
+          setRounds(0);
+        }
       }
 
       return "Oh, no, no, no. This is unacceptable. I need to speak to your manager, right now! "+ this + " unleashes a high-pitched, ear-splitting shriek, dealing " + damage +" points of damage to enemy party and "+ (damage / 2) + " points of damage to own party.";

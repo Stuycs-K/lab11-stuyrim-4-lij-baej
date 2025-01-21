@@ -59,7 +59,11 @@ public class Boss extends Adventurer{
     other.applyDamage(damage);
     restoreSpecial(2);
     if (multiplier() != 1.0) {
-      setRounds(rounds()-1);
+      setRounds(rounds()+1);
+      if (rounds() >= 2) {
+        setMultiplier(1.0);
+        setRounds(0);
+      }
     }
     return "Heh, gotcha, didn't I? Just... just don't make me swing again! "+ this + " striked their "+preferredWeapon+ " and he knocked out "+ other + " and dealt "+ damage +
     " points of damage.";
@@ -77,7 +81,11 @@ public class Boss extends Adventurer{
       sprayList.add(other);
       other.applyDamage(damage);
       if (multiplier() != 1.0) {
-        setRounds(rounds()-1);
+        setRounds(rounds()+1);
+        if (rounds() >= 2) {
+          setMultiplier(1.0);
+          setRounds(0);
+        }
       }
       return "This is what you get for messin' with me, buddy! A little liquid courage for ya! " + this + " unzips his pants and aims to urinate toward "+ other +", laughing uncontrollably, dealing "+ damage +" points of damage."+ other +" is drenched, and will recieve 4 damage each turn. Yuck!";
     }else{
