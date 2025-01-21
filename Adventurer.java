@@ -108,4 +108,9 @@ public abstract class Adventurer{
   public boolean poison() {
     return this.poison;
   }
+
+  //method to change poison status
+  public void setPoison(boolean poison) {
+    this.poison = poison;
+  }
 }
