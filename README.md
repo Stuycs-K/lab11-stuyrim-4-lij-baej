@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/KprAwj1n)
 # APCS - Road Rage: Fury
 
-Brawl your way and become a king of this street!
+"Brawl your way to the top and become the king of this street!"
 
 ## Features
 
@@ -38,10 +38,7 @@ Make a clear list of features that work/dont work
 :ballot_box_with_check: Special attack types, including AOE attack / DOT damage.
 
 
-## Adventurer Subclasses
-
-replace this with your documentation for your two Adventurer subclasses. If you modify or replace the provided CodeWarrior class, please provide documentation for that as well.
-
+## Fighters
 
 ### Thug
 ![Alt text](thug.png?raw=true "Title" )
@@ -94,7 +91,7 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 ### Boss: Drunkard
 
 ![Alt text](drunkard.png?raw=true "Title" )
-> "Jessica, darling... I'm here in your street! Where’s my Timothy? Hmmph... give him back to me! I need to see his smile, and play ball with him just one more time!"
+> "Jessica, darling... I'm here in your street! Where’s my Timothy? Hmmph... give him back to me!"
 
 | Stats | Description |
 | :---- | :---------- |
