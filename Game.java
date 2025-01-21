@@ -96,25 +96,6 @@ public class Game{
   }
 
 
-  public static void ColorBackground(ArrayList<Adventurer> chosenparty, int index, int BackgroundColor){
-    if (BackgroundColor == Text.BLACK) {
-      for (int i = 2; i < 7; i = i + 4) {
-        Text.go(i, 2);
-        for (int j = 0; j < 79; j++) {
-          System.out.print(Text.colorize(" ",BackgroundColor + 10));
-        }
-      }
-    }else{
-      for (int i = 2; i < 7; i = i + 4) {
-        Text.go(i, 2 + (80/ chosenparty.size() * (index + 1) - (80/ chosenparty.size())));
-        for (int j = 0; j < (80/ chosenparty.size()); j++) {
-          System.out.print(Text.colorize(" ",BackgroundColor + 10));
-        }
-      }
-    }
-
-  }
-
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
@@ -342,12 +323,6 @@ public class Game{
       }
 
       //Read user input
-      if (partyTurn){
-        if (whichPlayer < 3){
-          ColorBackground(party, whichPlayer, Text.GREEN);
-        }
-      }
-
 
       Text.go(startRow,2);
       input = userInput(in);
@@ -415,7 +390,6 @@ public class Game{
         //If no errors:
         if (error == false){
           playerMove += " " + DeathCheck(party.get(whichPlayer));
-          ColorBackground(party, whichPlayer, Text.BLACK);
 
           whichPlayer++;
 
