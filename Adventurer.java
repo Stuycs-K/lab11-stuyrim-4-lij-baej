@@ -3,7 +3,8 @@ public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
   private boolean poison = false;
-  private int multiplier = 1;
+  private double multiplier = 1;
+  private int multiplierRounds = 0;
 
   //Abstract methods are meant to be implemented in child classes.
   /*
@@ -116,18 +117,29 @@ public abstract class Adventurer{
     this.poison = poison;
   }
 
+  //method to access rounds
+  public int rounds() {
+    return multiplierRounds;
+  }
+
+  //method to change rounds 
+  public void setRounds(int num) {
+    this.multiplierRounds = num;
+  }
+
   //method to check multiplier
-  public int multiplier() {
+  public double multiplier() {
     return this.multiplier;
   }
 
   //method to change multiplier
-  public void setMultiplier(int multiplier, int rounds) {
-    if (rounds < 2 && multiplier() == 1) {
-      this.multiplier *= multiplier;
+  public void setMultiplier(double multiplier) {
+    if (rounds() < 2 && multiplier() == 1) {
+      this.multiplier = multiplier;
     }
     else {
       this.multiplier = 1;
+      setRounds(0);
     }
   }
 }
