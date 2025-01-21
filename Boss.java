@@ -4,6 +4,16 @@ public class Boss extends Adventurer{
   int intoxication, intoxicationMax;
   String preferredWeapon;
 
+  public static String intro = "Jessica, darling... I'm here in your street! Where’s my Timothy? Hmmph... give him back to me!";
+  String[] battleStory = {
+    "Oh yauh? You guys think you can stop this daddy? My family... hic... needs me!",
+    "Come on, it was just a punch, an accident! Cruel World, I didn't mean it!",
+    "Jessica... I know we’re not together anymore, but... I still... hic still think about the good times, ya know? hic... I... I never meant to hurt you and Timothy..."
+    };
+
+  public static String deathMessage = "I just wanna see him smile... play ball one more time with me... hic... Timothy... stay... thud..";
+  int storyCounter = 0;
+  boolean FirstMove = true;
   ArrayList<Adventurer>sprayList = new ArrayList<Adventurer>();
 
   /*the other constructors ultimately call the constructor
@@ -54,6 +64,12 @@ public class Boss extends Adventurer{
 
   /*Deal 2-7 damage to opponent, restores 2 intoxication*/
   public String attack(Adventurer other){
+    storyCounter ++;
+    if (storyCounter > 2){
+      storyCounter = 0;
+    }
+
+
     dealDotDamage();
     int damage = (int)(multiplier()* ((int)(Math.random()*6)+2));
     other.applyDamage(damage);
@@ -65,7 +81,9 @@ public class Boss extends Adventurer{
         setRounds(0);
       }
     }
-    return "Heh, gotcha, didn't I? Just... just don't make me swing again! "+ this + " striked their "+preferredWeapon+ " and he knocked out "+ other + " and dealt "+ damage +
+
+
+    return battleStory[storyCounter]+"Heh, gotcha, didn't I? Just... just don't make me swing again! "+ this + " striked their "+preferredWeapon+ " and he knocked out "+ other + " and dealt "+ damage +
     " points of damage.";
   }
 
@@ -89,7 +107,7 @@ public class Boss extends Adventurer{
       }
       return "This is what you get for messin' with me, buddy! A little liquid courage for ya! " + this + " unzips his pants and aims to urinate toward "+ other +", laughing uncontrollably, dealing "+ damage +" points of damage."+ other +" is drenched, and will recieve 4 damage each turn. Yuck!";
     }else{
-      return "How about bit of this? "+attack(other);
+      return attack(other);
     }
 
   }

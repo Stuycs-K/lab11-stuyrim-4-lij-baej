@@ -314,6 +314,13 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
 
+      if(enemies.get(0).getName().equals("Drunkard")) {
+        if (turn == 0){
+          TextBox(8, 42, 37, 23 - startRow, Boss.intro);
+        }
+
+      }
+
 
       if (startRow > 22) {
         wait(1/3);
@@ -461,6 +468,7 @@ public class Game{
           //not the party turn!
           whichPlayer = (int)(Math.random()*(party.size()));
 
+
           //enemy attacks a randomly chosen person with a randomly chosen attack.z`
           //Enemy action choices go here!
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -498,6 +506,11 @@ public class Game{
 
           whichOpponent++;
         } else {
+          if(enemies.get(0).getName().equals("Drunkard")) {
+            TextBox(8, 42, 37, 23 - startRow, Boss.deathMessage);
+            startRow += StringLineCalculator(Boss.deathMessage);
+          }
+
           enemies.remove(enemies.get(whichOpponent));
         }
 
