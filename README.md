@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/KprAwj1n)
 # APCS - Road Rage: Fury
 
-Brawl your way and become a king of this street!
+"Brawl your way to the top and become the king of this street!"
 
 ## Features
 
