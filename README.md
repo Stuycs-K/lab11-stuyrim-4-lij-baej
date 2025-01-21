@@ -40,7 +40,10 @@ Make a clear list of features that work/dont work
 
 replace this with your documentation for your two Adventurer subclasses. If you modify or replace the provided CodeWarrior class, please provide documentation for that as well.
 
+
 ### Thug
+![Alt text](thug.png?raw=true "Title" )
+
 | Stats | Description |
 | :---- | :---------- |
 | Max HP | 30 |
@@ -53,6 +56,8 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 
 
 ### Drug Dealer
+![Alt text](drugdealer.png?raw=true "Title" )
+
 | Stats | Description |
 | :---- | :---------- |
 | Max HP | 20 |
@@ -64,6 +69,8 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | Self-Heal | HP: + 5 |
 
 ### Karen
+![Alt text](karen.png?raw=true "Title" )
+
 | Stats | Description |
 | :---- | :---------- |
 | Max HP | 40 |
@@ -75,6 +82,8 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | Self-Heal | HP: + 1 - 2 |
 
 ### Boss: Drunkard
+![Alt text](drunkard.png?raw=true "Title" )
+
 | Stats | Description |
 | :---- | :---------- |
 | Max HP | 100 |
