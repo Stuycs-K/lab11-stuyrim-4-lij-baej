@@ -51,11 +51,12 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | :---- | :---------- |
 | Max HP | 30 |
 | Weapon | Baseball Bat |
-| Special | Anger |
+| Special | Charisma |
 | Max Special | 10 |
-| Special Attack | Strike // Damage: 15 // Cost: 8 |
-| Attack | Damage: 2 - 7 |
-| Self-Heal | HP: + 1 - 2|
+| Special Attack | Strike \ Deals 15 damage to opponent \ Costs 8 Charisma|
+| Attack | Deals 2-10 damage to opponent \ Restores 2 Anger |
+| Self-Heal | Restores 1-2 special and 1 HP to self |
+| Support (other) | Restores 1-2 special to other |
 
 
 ### Drug Dealer
@@ -69,9 +70,10 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | Weapon | Syringe |
 | Special | Powder |
 | Max Special | 30 |
-| Special Attack | Sprinkle // HP: + 10 - 15 // Cost: 5 |
-| Attack | Damage: 1 - 2 |
-| Self-Heal | HP: + 5 |
+| Special Attack | Sprinkle \ Gives a 150% damage multiplier to choosen player \ Costs 5 Powder |
+| Attack | Deals 2-8 damage to opponent \ Restores 2 Powder \ If opponent is Boss, inflicts poison status (-1 HP every turn)|
+| Self-Heal | Restores 2 special and 5 hp to self |
+| Support (other) | Restores 5 - 10 HP to other |
 
 ### Karen
 
@@ -84,9 +86,10 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | Weapon | Purse |
 | Special | Demands |
 | Max Special | 10 |
-| Special Attack | Call the Manager! // Damage: 10 to all enemies // Cost: 10 |
-| Attack | Damage: 1 - 3 |
-| Self-Heal | HP: + 1 - 2 |
+| Special Attack | Call the Manager! \ Deals 10 damage to all opponents \ Costs 8 Demands |
+| Attack | Deals 1-3 damage to opponent \ Restores 2 Demands |
+| Self-Heal | Restores 1-2 special |
+| Support (other) | Restores 1 special to other |
 
 ### Boss: Drunkard
 
@@ -97,8 +100,9 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | :---- | :---------- |
 | Max HP | 100 |
 | Weapon | Broken Bottle |
-| Special | Sobriety |
+| Special | Intoxication |
 | Max Special | 55 |
-| Special Attack | Spray // Damage: 1- 15 to target wih chance of 1 Damage to other players lasting 2 turns // Cost: 10 |
-| Attack | Damage: 1 - 8 |
-| Self-Heal | HP: + 1 - 2 or Special: + 5 - 10 |
+| Special Attack | Spray \ Deals 3-12 damage to opponent \ Costs 8 Intoxications |
+| Attack | Deal 2-7 damage to opponent \ Restores 2 Intoxication |
+| Self-Heal | Restores 1-2 special and 1 HP to self |
+| Support (other) | Restores 1-2 special to other |
