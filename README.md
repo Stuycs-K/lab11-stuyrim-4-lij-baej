@@ -16,11 +16,33 @@ Make a clear list of features that work/dont work
 :beetle: This is a bug that affects the game.
 
 
+
+:white_check_mark: play with a group of 3 different types adventurers
+
+:white_check_mark: play against 1-3 randomly chosen adventurer opponents
+
+:white_check_mark: use attack/special operations on your opponents
+
+:white_check_mark: use attack/special operations on your opponents
+
+:x: use support operations on your team
+
+:white_check_mark: program ends when the user choosed to quit, or all enemies is defeated, or the entire party is defeated. Contains win/lose screen.
+
+:white_check_mark: display the results of the attack/special/support inside your border
+
+:white_check_mark: Contains a special boss class adventurer for when a single opponent is selected.
+
+:ballot_box_with_check: Display the past several actions by keeping a list of the prior actions in some kind of list.
+
+:ballot_box_with_check: Special attack types, including AOE attack / DOT damage.
+
+
 ## Adventurer Subclasses
 
 replace this with your documentation for your two Adventurer subclasses. If you modify or replace the provided CodeWarrior class, please provide documentation for that as well.
 
-### Thug 
+### Thug
 | Stats | Description |
 | :---- | :---------- |
 | Max HP | 30 |
@@ -32,7 +54,7 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | Self-Heal | HP: + 1 - 2|
 
 
-### Drug Dealer 
+### Drug Dealer
 | Stats | Description |
 | :---- | :---------- |
 | Max HP | 20 |
