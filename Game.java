@@ -374,13 +374,33 @@ public class Game{
             error = true;
           }
         }
-        else if(input.startsWith("su ") || input.startsWith("support ")){
+        else if(input.equals("su ") || input.equals("support ")){
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
           playerMove += party.get(whichPlayer).support();
+        }
+        else if(input.startsWith("su ") || input.startsWith("support ")){
+          //"support 0" or "su 0" or "su 2" etc.
+          //assume the value that follows su  is an integer.
+          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+          //YOUR CODE HERE
+          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          try {
+            num = Integer.parseInt(input.substring(input.length() -1, input.length()));
+            playerMove += party.get(whichPlayer).support(party.get(num));
+          }
+          catch (NumberFormatException e)  {
+            TextBox(startRow, 2, 37, 23 - startRow, "Error! Please enter integer value to target enemy");
+            startRow+=2;
+            error = true;
+          } catch (IndexOutOfBoundsException e){
+            TextBox(startRow, 2, 37, 23 - startRow, "Error! Please add valid integer value!");
+            startRow+=2;
+            error = true;
+          }
         }else {
           TextBox(startRow, 2, 37, 23 - startRow, "Error! Please enter valid move.");
           startRow++;
