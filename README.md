@@ -15,7 +15,7 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
-< br / >< br / >
+<br/><br/>
 
 :white_check_mark: play with a group of 3 different types adventurers
 
