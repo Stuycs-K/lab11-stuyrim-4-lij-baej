@@ -87,7 +87,7 @@ public class Thug extends Adventurer{
   public String support(){
     int hp = 1;
     setHP(getHP()+hp);
-    return this+" yells out to restore"+restoreSpecial((int)(Math.random()*1)+1)+" "
+    return this+" yells out to restore "+restoreSpecial((int)(Math.random()*1)+1)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
 }
