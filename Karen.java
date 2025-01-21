@@ -42,7 +42,7 @@ public class Karen extends Adventurer{
 
   /*Deal 1-3 damage to opponent, restores 2 demands*/
   public String attack(Adventurer other){
-    int damage = (int)(multiplier() * ((int)(Math.random()*3)+1));
+    int damage = (int)(multiplier() * ((int)(Math.random()*4)+1));
     other.applyDamage(damage);
     restoreSpecial(2);
     if (multiplier() != 1.0) {
@@ -98,13 +98,13 @@ public class Karen extends Adventurer{
   }
   /*Restores 5 special to other*/
   public String support(Adventurer other){
-    return "You wouldn’t want to disappoint me, would you? " + this + " restores " + other + "'s " + other.restoreSpecial((int)(Math.random()*1)+1)+" "+other.getSpecialName();
+    return "You wouldn’t want to disappoint me, would you? " + this + " restores " + other + "'s " + other.restoreSpecial(1)+" "+other.getSpecialName();
   }
 
   /*Restores 6 special and 1 hp to self.*/
   public String support(){
     int hp = 1;
     setHP(getHP()+hp);
-    return "It's all about self-care! "+ this + " restores " + restoreSpecial((int)(Math.random()*1)+1)+" "+ getSpecialName()+ " and "+hp+" HP";
+    return "It's all about self-care! "+ this + " restores " + restoreSpecial((int)(Math.random()*2)+1)+" "+ getSpecialName()+ " and "+hp+" HP";
   }
 }
