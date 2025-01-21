@@ -3,6 +3,7 @@ public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
   private boolean poison = false;
+  private int multiplier = 1;
 
   //Abstract methods are meant to be implemented in child classes.
   /*
@@ -48,6 +49,7 @@ public abstract class Adventurer{
 
   //hurt or hinder the target adventurer, consume some special resource
   public abstract String specialAttack(Adventurer other);
+  
 
   /*
   standard methods
@@ -112,5 +114,20 @@ public abstract class Adventurer{
   //method to change poison status
   public void setPoison(boolean poison) {
     this.poison = poison;
+  }
+
+  //method to check multiplier
+  public int multiplier() {
+    return this.multiplier;
+  }
+
+  //method to change multiplier
+  public void setMultiplier(int multiplier, int rounds) {
+    if (rounds < 2 && multiplier() == 1) {
+      this.multiplier *= multiplier;
+    }
+    else {
+      this.multiplier = 1;
+    }
   }
 }
