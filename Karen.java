@@ -42,7 +42,7 @@ public class Karen extends Adventurer{
 
   /*Deal 1-3 damage to opponent, restores 2 demands*/
   public String attack(Adventurer other){
-    damage *= (int)(Math.random()*3)+1;
+    int damage = multiplier() * (int)(Math.random()*3)+1;
     other.applyDamage(damage);
     restoreSpecial(2);
     return "Let me show you how it's done, sweetie! "+ this + " attacked "+ other + " and dealt "+ damage +
@@ -55,7 +55,7 @@ public class Karen extends Adventurer{
   public String specialAttack(Adventurer other){
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
-      damage *= 10;
+      int damage = multiplier() * 10;
 
       for (Adventurer member : Game.enemies){
         if (Game.partyTurn == true){

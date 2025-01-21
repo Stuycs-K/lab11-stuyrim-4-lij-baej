@@ -55,7 +55,7 @@ public class Boss extends Adventurer{
   /*Deal 2-7 damage to opponent, restores 2 intoxication*/
   public String attack(Adventurer other){
     dealDotDamage();
-    damage *= (int)(Math.random()*6)+2;
+    int damage = multiplier()* (int)(Math.random()*6)+2;
     other.applyDamage(damage);
     restoreSpecial(2);
     return "Heh, gotcha, didn't I? Just... just don't make me swing again! "+ this + " striked their "+preferredWeapon+ " and he knocked out "+ other + " and dealt "+ damage +
@@ -69,7 +69,7 @@ public class Boss extends Adventurer{
     if(getSpecial() >= 8){
       dealDotDamage();
       setSpecial(getSpecial()-8);
-      damage *= (8);
+      int damage = multiplier() * (8);
 
       sprayList.add(other);
       other.applyDamage(damage);
