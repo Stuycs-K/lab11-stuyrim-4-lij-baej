@@ -1,81 +1,95 @@
 public class DrugDealer extends Adventurer{
-  int anger, angerMax;
+  int powder, powderMax;
   String preferredWeapon;
 
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public DrugDealer(String name, int hp, String weapon){
     super(name,hp);
-    angerMax = 12;
-    anger = angerMax/2;
+    powderMax = 30;
+    powder = powderMax/2;
     preferredWeapon = weapon;
   }
 
   public DrugDealer(String name, int hp){
-    this(name,hp,"Baseball Bat");
+    this(name,hp,"Syringe");
   }
 
   public DrugDealer(String name){
-    this(name,30);
+    this(name,20);
   }
 
   public DrugDealer(){
-    this("DrugDealer");
+    this("Drug Dealer");
   }
 
   /*The next 8 methods are all required because they are abstract:*/
   public String getSpecialName(){
-    return "anger";
+    return "powder";
   }
 
   public int getSpecial(){
-    return anger;
+    return powder;
   }
 
   public void setSpecial(int n){
-    anger = n;
+    powder = n;
   }
 
   public int getSpecialMax(){
-    return angerMax;
+    return powderMax;
   }
 
-  /*Deal 2-7 damage to opponent, restores 2 anger*/
+  /*Deal 5-10 damage to opponent, restores 2 powder, if opponent is Boss, inflict poison status (-1 HP every turn)*/
   public String attack(Adventurer other){
-    int damage = (int)(Math.random()*6)+2;
+    String result;
+    int damage = (int)(multiplier() * (int)(Math.random()*5 + 5));
     other.applyDamage(damage);
     restoreSpecial(2);
-    return this + " attacked "+ other + " and dealt "+ damage +
-    " points of damage. He then lets out a thick roar.";
+    result = this + " stabbed their unsanitary "+preferredWeapon+
+    " into " + other + " and injects an unknown liquid into them, dealing "+ damage +
+    " points of damage.";
+    if (other.getName().equals("Drunkard")){
+      result += " Drunkard gets an infection, he recieves 1 point of damange every turn.";
+      other.setPoison(true);
+    }
+    if (multiplier() != 1.0) {
+      setRounds(rounds()-1);
+    }
+    return result;
   }
 
-  /*Deal 3-12 damage to opponent, only if anger is high enough.
-  *Reduces anger by 8.
+  /*Gives a x150% damage buff to choosen player, only if powder is high enough.
+  *Reduces powder by 5.
   */
   public String specialAttack(Adventurer other){
-    if(getSpecial() >= 8){
-      setSpecial(getSpecial()-8);
-      int damage = (15);
-      other.applyDamage(damage);
-      return this + " striked their "+preferredWeapon+
-      " to " + other +
-      " He knocked out "+other+" dealing "+ damage +" points of damage.";
-    }else{
-      return "Not enough anger to use the strike. Instead "+attack(other);
+    if(getSpecial() >= 5 && other.multiplier() != 1.0){
+      setSpecial(getSpecial()-5);
+      other.setMultiplier(1.5);
+      return this + " injected "+preferredWeapon+
+      " with powder into " + other +
+      ". " + other + " suddenly feels rejuvenated. He now deals 150% more damage for two turns (unstackable).";
+    }
+    else if (getSpecial() < 5) {
+      return "Not enough powder to use the strike. Instead "+attack(other);
+    } else {
+      return "Can't reinject powder. Instead " +attack(other);
     }
 
   }
-  /*Restores 5 special to other*/
-  public String support(Adventurer other){
-    return "Gives a encouraging yell to "+other+" and restores "
-    + other.restoreSpecial((int)(Math.random()*1)+1)+" "+other.getSpecialName();
-  }
-
-  /*Restores 6 special and 1 hp to self.*/
+  /*Restores 2 special and 5 hp to self.*/
   public String support(){
-    int hp = 1;
-    setHP(getHP()+hp);
-    return this+" yells out to restore"+restoreSpecial((int)(Math.random()*1)+1)+" "
+    int hp = 5;
+    setHP(getHP() + hp);
+    return this+" snorts some powder to restore "+restoreSpecial(2)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
+
+  /*Restores 5 - 10 hp to other */
+  public String support(Adventurer other){
+    int hp = (int)(int)(Math.random()*5 + 5);
+    other.setHP(other.getHP() + hp);
+    return this + " blows some mysterious substance into " + other + "'s face and restores " + hp + " HP.";
+  }
+
 }

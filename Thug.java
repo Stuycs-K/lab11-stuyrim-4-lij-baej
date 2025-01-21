@@ -42,9 +42,12 @@ public class Thug extends Adventurer{
 
   /*Deal 2-7 damage to opponent, restores 2 anger*/
   public String attack(Adventurer other){
-    int damage = (int)(Math.random()*6)+2;
+    int damage = (int)(multiplier() * (int)(Math.random()*6)+2);
     other.applyDamage(damage);
     restoreSpecial(2);
+    if (multiplier() != 1.0) {
+      setRounds(rounds()-1);
+    }
     return this + " attacked "+ other + " and dealt "+ damage +
     " points of damage. He then lets out a thick roar.";
   }
@@ -55,8 +58,11 @@ public class Thug extends Adventurer{
   public String specialAttack(Adventurer other){
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
-      int damage = (15);
+      int damage = (int)(multiplier()*(15));
       other.applyDamage(damage);
+      if (multiplier() != 1.0) {
+        setRounds(rounds()-1);
+      }
       return this + " striked their "+preferredWeapon+ " to " + other + " He knocked out "+other+" dealing "+ damage +" points of damage.";
     }else{
       return "Not enough anger to use the strike. Instead "+attack(other);

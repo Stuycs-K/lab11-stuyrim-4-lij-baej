@@ -2,6 +2,9 @@ import java.util.Random;
 public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
+  private boolean poison = false;
+  private double multiplier = 1;
+  private int multiplierRounds = 0;
 
   //Abstract methods are meant to be implemented in child classes.
   /*
@@ -47,6 +50,7 @@ public abstract class Adventurer{
 
   //hurt or hinder the target adventurer, consume some special resource
   public abstract String specialAttack(Adventurer other);
+  
 
   /*
   standard methods
@@ -101,5 +105,41 @@ public abstract class Adventurer{
 
   public void setName(String s){
     this.name = s;
+  }
+
+  //method to check poison status
+  public boolean poison() {
+    return this.poison;
+  }
+
+  //method to change poison status
+  public void setPoison(boolean poison) {
+    this.poison = poison;
+  }
+
+  //method to access rounds
+  public int rounds() {
+    return multiplierRounds;
+  }
+
+  //method to change rounds 
+  public void setRounds(int num) {
+    this.multiplierRounds = num;
+  }
+
+  //method to check multiplier
+  public double multiplier() {
+    return this.multiplier;
+  }
+
+  //method to change multiplier
+  public void setMultiplier(double multiplier) {
+    if (rounds() < 2 && multiplier() == 1) {
+      this.multiplier = multiplier;
+    }
+    else {
+      this.multiplier = 1;
+      setRounds(0);
+    }
   }
 }
