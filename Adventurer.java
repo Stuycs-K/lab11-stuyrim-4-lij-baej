@@ -2,6 +2,7 @@ import java.util.Random;
 public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
+  private boolean poison = false;
 
   //Abstract methods are meant to be implemented in child classes.
   /*
@@ -101,5 +102,10 @@ public abstract class Adventurer{
 
   public void setName(String s){
     this.name = s;
+  }
+
+  //method to check poison status
+  public boolean poison() {
+    return this.poison;
   }
 }
