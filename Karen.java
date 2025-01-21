@@ -42,9 +42,12 @@ public class Karen extends Adventurer{
 
   /*Deal 1-3 damage to opponent, restores 2 demands*/
   public String attack(Adventurer other){
-    int damage = multiplier() * (int)(Math.random()*3)+1;
+    int damage = (int)(multiplier() * ((int)(Math.random()*3)+1));
     other.applyDamage(damage);
     restoreSpecial(2);
+    if (multiplier() != 1.0) {
+      setRounds(rounds()-1);
+    }
     return "Let me show you how it's done, sweetie! "+ this + " attacked "+ other + " and dealt "+ damage +
     " points of damage.";
   }
@@ -55,7 +58,7 @@ public class Karen extends Adventurer{
   public String specialAttack(Adventurer other){
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
-      int damage = multiplier() * 10;
+      int damage = (int)(multiplier() * 10);
 
       for (Adventurer member : Game.enemies){
         if (Game.partyTurn == true){
@@ -72,6 +75,9 @@ public class Karen extends Adventurer{
         }else{
           member.applyDamage(damage + 5);
         }
+      }
+      if (multiplier() != 1.0) {
+        setRounds(rounds()-1);
       }
 
       return "Oh, no, no, no. This is unacceptable. I need to speak to your manager, right now! "+ this + " unleashes a high-pitched, ear-splitting shriek, dealing " + damage +" points of damage to enemy party and "+ (damage / 2) + " points of damage to own party.";
