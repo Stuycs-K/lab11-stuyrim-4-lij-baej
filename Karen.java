@@ -55,14 +55,23 @@ public class Karen extends Adventurer{
   public String specialAttack(Adventurer other){
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
-      int damage = (10);
+      int damage = 10;
 
       for (Adventurer member : Game.enemies){
-        member.applyDamage(50);
+        if (Game.partyTurn == true){
+          member.applyDamage(damage + 5);
+        }else{
+          member.applyDamage(damage - 5);
+        }
+
       }
 
       for (Adventurer member : Game.party){
-        member.applyDamage(damage / 2);
+        if (Game.partyTurn == true){
+          member.applyDamage(damage - 5);
+        }else{
+          member.applyDamage(damage + 5);
+        }
       }
 
       return "Oh, no, no, no. This is unacceptable. I need to speak to your manager, right now! "+ this + " unleashes a high-pitched, ear-splitting shriek, dealing " + damage +" points of damage to enemy party and "+ (damage / 2) + " points of damage to own party.";

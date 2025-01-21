@@ -12,6 +12,8 @@ public class Game{
 
   //list that tracks enemy that died, used for display
   public static ArrayList<Adventurer>temporaryDied = new ArrayList<Adventurer>();
+  public static boolean partyTurn = true;
+
 
   public static void wait(int seconds){
   try {
@@ -93,6 +95,25 @@ public class Game{
     }
   }
 
+
+  public static void ColorBackground(ArrayList<Adventurer> chosenparty, int index, int BackgroundColor){
+    if (BackgroundColor == Text.BLACK) {
+      for (int i = 2; i < 7; i = i + 4) {
+        Text.go(i, 2);
+        for (int j = 0; j < 79; j++) {
+          System.out.print(Text.colorize(" ",BackgroundColor + 10));
+        }
+      }
+    }else{
+      for (int i = 2; i < 7; i = i + 4) {
+        Text.go(i, 2 + (80/ chosenparty.size() * (index + 1) - (80/ chosenparty.size())));
+        for (int j = 0; j < (80/ chosenparty.size()); j++) {
+          System.out.print(Text.colorize(" ",BackgroundColor + 10));
+        }
+      }
+    }
+
+  }
 
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
@@ -287,7 +308,7 @@ public class Game{
     party.add(three);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
-    boolean partyTurn = true;
+
     int whichPlayer = 0;
     int whichOpponent = 0;
     int turn = 0;
@@ -321,6 +342,13 @@ public class Game{
       }
 
       //Read user input
+      if (partyTurn){
+        if (whichPlayer < 3){
+          ColorBackground(party, whichPlayer, Text.GREEN);
+        }
+      }
+
+
       Text.go(startRow,2);
       input = userInput(in);
 
@@ -330,8 +358,8 @@ public class Game{
       //display event based on last turn's input
       if(partyTurn){
         boolean error = false;
-
         String playerMove = "";
+
         if (party.get(whichPlayer).getHP() > 0) {
           int num;
         //Process user input for the last Adventurer:
@@ -387,6 +415,8 @@ public class Game{
         //If no errors:
         if (error == false){
           playerMove += " " + DeathCheck(party.get(whichPlayer));
+          ColorBackground(party, whichPlayer, Text.BLACK);
+
           whichPlayer++;
 
           TextBox(startRow, 2, 37, 23 - startRow, playerMove);
@@ -427,6 +457,7 @@ public class Game{
           whichOpponent = 0;
         }
         //done with one party member
+
       }else{
         if (enemies.get(whichOpponent).getHP() > 0) {
           //not the party turn!
@@ -484,6 +515,11 @@ public class Game{
 
       }
 
+
+      clearPartyMenu();
+      //display the updated screen after input has been processed.
+      drawScreen(party, enemies);
+
       if(enemies.size() == 0) {
         drawText("YOU WIN !!!!", 15, 17);
         break;
@@ -493,9 +529,6 @@ public class Game{
         drawText("You are defeated", 15, 16);
         break;
       }
-      clearPartyMenu();
-      //display the updated screen after input has been processed.
-      drawScreen(party, enemies);
 
 
     }//end of main game loop
