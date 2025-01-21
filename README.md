@@ -1,5 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/KprAwj1n)
-# APCS - Stuyrim
+# APCS - Road Rage: Fury
 
 ## Features
 
@@ -43,6 +43,7 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 
 ### Thug
 ![Alt text](thug.png?raw=true "Title" )
+> "Better pray, 'cause when you step on my block, you won’t see the next day!"
 
 | Stats | Description |
 | :---- | :---------- |
@@ -56,7 +57,9 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 
 
 ### Drug Dealer
+
 ![Alt text](drugdealer.png?raw=true "Title" )
+> "I have the control here...don't cross the line."
 
 | Stats | Description |
 | :---- | :---------- |
@@ -69,7 +72,9 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | Self-Heal | HP: + 5 |
 
 ### Karen
+
 ![Alt text](karen.png?raw=true "Title" )
+> "Excuse me, but I know my rights, and this street is my property."
 
 | Stats | Description |
 | :---- | :---------- |
@@ -82,7 +87,9 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | Self-Heal | HP: + 1 - 2 |
 
 ### Boss: Drunkard
+
 ![Alt text](drunkard.png?raw=true "Title" )
+> "Jessica, darling... I'm here in your street! Where’s my Timothy? Hmmph... give him back to me! I need to see his smile, and play ball with him just one more time!"
 
 | Stats | Description |
 | :---- | :---------- |
