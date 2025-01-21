@@ -467,6 +467,7 @@ public class Game{
         if (enemies.get(whichOpponent).getHP() > 0) {
           //not the party turn!
           whichPlayer = (int)(Math.random()*(party.size()));
+          int randomAlly = (int)(Math.random()*(enemies.size()));
 
 
           //enemy attacks a randomly chosen person with a randomly chosen attack.z`
@@ -475,12 +476,19 @@ public class Game{
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
           String enemyMove;
-          int random = (int)(Math.random() * 3);
+          int random = (int)(Math.random() * 4);
           if (random == 0) {
             enemyMove = enemies.get(whichOpponent).attack(party.get(whichPlayer));
           }
           else if (random == 1) {
-            enemyMove = enemies.get(whichOpponent).specialAttack(party.get(whichPlayer));
+            if (enemies.get(whichOpponent).getName().equals("Drug Dealer")) {
+              enemyMove = enemies.get(whichOpponent).specialAttack(party.get(randomAlly));
+            } else {
+              enemyMove = enemies.get(whichOpponent).specialAttack(party.get(whichPlayer));
+            }
+          }
+          else if (random == 2) {
+            enemyMove = enemies.get(whichOpponent).support(enemies.get(randomAlly));
           }
           else {
             enemyMove = enemies.get(whichOpponent).support();
@@ -491,8 +499,8 @@ public class Game{
             TextBox(8, 42, 37, 23 - startRow, "Drunkard has an infection and he looses 1 HP");
             startRow+=2;
           }
-
           enemyMove += " " + DeathCheck(enemies.get(whichOpponent));
+
           TextBox(startRow, 42, 37, 23 - startRow, enemyMove);
           startRow += StringLineCalculator(enemyMove);
 
