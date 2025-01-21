@@ -6,7 +6,7 @@ public class Thug extends Adventurer{
   *with all parameters.*/
   public Thug(String name, int hp, String weapon){
     super(name,hp);
-    angerMax = 12;
+    angerMax = 10;
     anger = angerMax/2;
     preferredWeapon = weapon;
   }
