@@ -57,8 +57,9 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 
 
 ### Drug Dealer
-> "I have the control here...don't cross the line."
+
 ![Alt text](drugdealer.png?raw=true "Title" )
+> "I have the control here...don't cross the line."
 
 | Stats | Description |
 | :---- | :---------- |
@@ -71,8 +72,9 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | Self-Heal | HP: + 5 |
 
 ### Karen
-> "Excuse me, but I know my rights, and this street is my property."
+
 ![Alt text](karen.png?raw=true "Title" )
+> "Excuse me, but I know my rights, and this street is my property."
 
 | Stats | Description |
 | :---- | :---------- |
@@ -85,8 +87,9 @@ replace this with your documentation for your two Adventurer subclasses. If you 
 | Self-Heal | HP: + 1 - 2 |
 
 ### Boss: Drunkard
-> "Jessica, darling... I'm here in your street! Where’s my Timothy? Hmmph... give him back to me! I need to see his smile, and play ball with him just one more time!"
+
 ![Alt text](drunkard.png?raw=true "Title" )
+> "Jessica, darling... I'm here in your street! Where’s my Timothy? Hmmph... give him back to me! I need to see his smile, and play ball with him just one more time!"
 
 | Stats | Description |
 | :---- | :---------- |
