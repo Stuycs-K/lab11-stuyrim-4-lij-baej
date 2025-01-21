@@ -23,7 +23,7 @@ Make a clear list of features that work/dont work
 
 :white_check_mark: use attack/special operations on your opponents
 
-:x: use support operations on your team
+:white_check_mark: use support operations on your team
 
 :white_check_mark: program ends when the user choosed to quit, or all enemies is defeated, or the entire party is defeated. Contains win/lose screen.
 
