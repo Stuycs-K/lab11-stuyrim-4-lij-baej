@@ -455,6 +455,9 @@ public class Game{
       }else{
         if (enemies.get(whichOpponent).getHP() > 0) {
           //not the party turn!
+          if(enemies.get(whichOpponent).getName().equals("Drunkard") && enemies.get(whichOpponent).poison()) {
+            enemies.get(whichOpponent).setHP(enemies.get(whichOpponent).getHP() -1);
+          }
           whichPlayer = (int)(Math.random()*(party.size()));
 
           //enemy attacks a randomly chosen person with a randomly chosen attack.z`
