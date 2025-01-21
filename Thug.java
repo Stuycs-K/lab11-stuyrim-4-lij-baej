@@ -42,7 +42,7 @@ public class Thug extends Adventurer{
 
   /*Deal 2-7 damage to opponent, restores 2 charisma*/
   public String attack(Adventurer other){
-    int damage = (int)(multiplier() * (int)(Math.random()*6)+2);
+    int damage = (int)(multiplier() * (int)(Math.random()*9)+2);
     other.applyDamage(damage);
     restoreSpecial(2);
     if (multiplier() != 1.0) {
@@ -80,14 +80,14 @@ public class Thug extends Adventurer{
   /*Restores 5 special to other*/
   public String support(Adventurer other){
     return this + " gives a encouraging yell to "+other+" and restores "
-    + other.restoreSpecial((int)(Math.random()*1)+1)+" "+other.getSpecialName();
+    + other.restoreSpecial((int)(Math.random()*2)+1)+" "+other.getSpecialName();
   }
 
   /*Restores 6 special and 1 hp to self.*/
   public String support(){
     int hp = 1;
     setHP(getHP()+hp);
-    return this+" lifts his collar and fixes his fit to restore "+restoreSpecial((int)(Math.random()*1)+1)+" "
+    return this+" lifts his collar and fixes his fit to restore "+restoreSpecial((int)(Math.random()*2)+1)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
 }
