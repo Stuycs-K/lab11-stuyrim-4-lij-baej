@@ -77,7 +77,7 @@ public class DrugDealer extends Adventurer{
     else if (getSpecial() < 5) {
       return "Not enough powder to use the strike. Instead "+attack(other);
     } else {
-      return "Can't reinject powder into " + other + ". Instead " +attack(Game.enemies.get(0));
+      return "Can't reinject powder into " + other + ".";
     }
 
   }
